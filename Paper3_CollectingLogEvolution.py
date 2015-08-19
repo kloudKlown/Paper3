@@ -2154,10 +2154,13 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
 
                     GatherMetricsForNotChangedLogs(addedLoglist[jm].logLine,oldlogList[im].logLine,metricsList[im],allCodeChurn,(' commit '+tmp[-1]),addedLogLines) 
-                    print "change text length"
-                    print addedLoglist[jm].logLine
-                    print oldlogList[im].logLine
-                    print str(metricsList[im].logTextChangeLength)
+
+                    debugEnabled = 0
+                    if debugEnabled:
+                        print "change text length"
+                        print addedLoglist[jm].logLine
+                        print oldlogList[im].logLine
+                        print str(metricsList[im].logTextChangeLength)
 
                         # print oldlogList[im].logLine + ' New Log is ' + addedLoglist[jm].logLine
                     debugEnabled = 0                   
