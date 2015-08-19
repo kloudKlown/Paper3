@@ -650,7 +650,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
         if debugEnabled:
             print str((tmpDeleted[1].count('"')/2)) +  ' length of deleted log '
             print tmpDeleted[1] + ' <<------- this is deleted LOG '
-            print metricsNeeded.logTextLength + ' Length of added log '
+            print str(metricsNeeded.logTextLength) + ' Length of added log '
             print tmp[1] + ' <<<<<<------ THIS IS ADDED LOG IS '
         # if len(deletedLog) > 2:
         metricsNeeded.logTextChangeLength = metricsNeeded.logTextLength - (tmpDeleted[1].count('"')/2)
