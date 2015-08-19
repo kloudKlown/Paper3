@@ -728,6 +728,8 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                             for aprimeprime in dprime:
                                 if  len(aprimeprime) > 1:
                                     variablesdel = variablesdel +  aprimeprime + '\n'
+                        else:
+                            variablesdel = variablesdel +  d + '\n'
                 else:
                     # print d + ' variable add'
                     textdel = textdel + d + '\n' 
