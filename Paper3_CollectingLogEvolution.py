@@ -744,7 +744,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
 
 
 
-
+        debugEnabled = 0
         if debugEnabled:
             print ' Added LOG'
             print addedLog
