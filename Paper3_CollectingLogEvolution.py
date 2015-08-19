@@ -646,21 +646,21 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
     
     debugEnabled = 1
     # tmp2 = deletedLog[4:]
-    if len(deletedLog) > 1:
-        if debugEnabled:
-            print str((tmpDeleted[1].count('"')/2)) +  ' length of deleted log '
-            print tmpDeleted[1] + ' <<------- this is deleted LOG '
-            print metricsNeeded.logTextLength 
-            print tmp[1] + ' <<<<<<------ THIS IS ADDED LOG IS '
-        # if len(deletedLog) > 2:
-        metricsNeeded.logTextChangeLength = metricsNeeded.logTextLength - (tmpDeleted[1].count('"')/2)
+    # if len(deletedLog) > 1:
+    #     if debugEnabled:
+    #         print str((tmpDeleted[1].count('"')/2)) +  ' length of deleted log '
+    #         print tmpDeleted[1] + ' <<------- this is deleted LOG '
+    #         print metricsNeeded.logTextLength 
+    #         print tmp[1] + ' <<<<<<------ THIS IS ADDED LOG IS '
+    #     # if len(deletedLog) > 2:
+    #     metricsNeeded.logTextChangeLength = metricsNeeded.logTextLength - (tmpDeleted[1].count('"')/2)
 
-    if metricsNeeded.logTextChangeLength != 0 and debugEnabled:
+    # if metricsNeeded.logTextChangeLength != 0 and debugEnabled:
 
-        print deletedLog
-        print addedLog
-        print ' LOG TEXT CHANGE LENGTH '
-        print metricsNeeded.logTextChangeLength
+    #     print deletedLog
+    #     print addedLog
+    #     print ' LOG TEXT CHANGE LENGTH '
+    #     print metricsNeeded.logTextChangeLength
 
 
 
@@ -669,7 +669,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
 ########## ADDED LOGS
 
 
-    debugEnabled = 0
+    debugEnabled = 1
     if len(deletedLog) > 1:
 
     ### Removing the opening and closing braces of the log so it doesnt fuck with anything
@@ -721,14 +721,25 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
             if len(d) > 1:
                 if d[:1] == ',' or d[:1] == '+' or  d[-1:] == '+' :
                     # print d + ' variable add'
-                    variablesdel = variablesdel +  d + '\n'
+                        if d.count(',') > 1:
+                            dprime = d.split(',')
+                            # print a 
+                            # print ' comma separated crap'
+                            for aprimeprime in dprime:
+                                if  len(aprimeprime) > 1:
+                                    variablesdel = variablesdel +  aprimeprime + '\n'
                 else:
                     # print d + ' variable add'
                     textdel = textdel + d + '\n' 
         metricsNeeded.logTextLength = len(textadd.splitlines())
-        metricsNeeded.logVariableChangeCount =  len(variablesadd.splitlines())
+        metricsNeeded.logVariableCount =  len(variablesadd.splitlines())
         metricsNeeded.logTextChangeLength = len(textadd.splitlines()) - len(textdel.splitlines())
         metricsNeeded.logVariableChangeCount = len(variablesadd.splitlines()) - len(variablesdel.splitlines())
+
+        # if debugEnabled:
+        #     print metricsNeeded.logTextLength
+
+
 
 
 
