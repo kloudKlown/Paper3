@@ -756,7 +756,11 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
             # metricsNeeded.logVariableChangeCount =  len(variablesadd.splitlines())
 
             # metricsNeeded.logTextChangeLength = len(textadd.splitlines()) - len(textdel.splitlines())
+            print 'Log text change lenght is '
             print metricsNeeded.logTextChangeLength
+
+            print 'Log Variable change length is '
+            print metricsNeeded.logVariableChangeCount
 
             # metricsNeeded.logVariableChangeCount = len(variablesadd.splitlines()) - len(variablesdel.splitlines())
             # print metricsNeeded.logVariableChangeCount
