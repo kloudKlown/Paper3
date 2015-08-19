@@ -562,8 +562,7 @@ def LogChangeType(addedLogLines,deletedLogLines):
 def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChurn,commit_added,addedLogLines):
     
 
-    # if deletedLog =="":
-    #     deletedLog = "Null"
+    ### SPILITING THE LOG METHOD HERE
     tmp = addedLog.split('.',1)
 #    print tmp
     tmpDeleted =  deletedLog.split('.',1)
@@ -647,15 +646,17 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
     
     debugEnabled = 1
     # tmp2 = deletedLog[4:]
-    if len(deletedLog) > 1 and debugEnabled:
-        print (tmpDeleted[1].count('"')/2) 
-        print tmpDeleted[1]
-        print metricsNeeded.logTextLength
-        print tmp[1]
+    if len(deletedLog) > 1:
+        if debugEnabled:
+            print str((tmpDeleted[1].count('"')/2)) +  ' length of deleted log '
+            print tmpDeleted[1] + ' <<------- this is deleted LOG '
+            print metricsNeeded.logTextLength + ' Length of added log '
+            print tmp[1] + ' <<<<<<------ THIS IS ADDED LOG IS '
         # if len(deletedLog) > 2:
         metricsNeeded.logTextChangeLength = metricsNeeded.logTextLength - (tmpDeleted[1].count('"')/2)
 
     if metricsNeeded.logTextChangeLength != 0 and debugEnabled:
+
         print deletedLog
         print addedLog
         print ' LOG TEXT CHANGE LENGTH '
