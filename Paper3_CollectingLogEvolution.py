@@ -2271,6 +2271,9 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
 
 
+
+
+
                 if matchedFlag == 1:
                     TypeId = -1 ## Default ID -- 1. Bug 2. New Feature 3. Task 4. IMprovement 5. Wish 6. Test 7. Sub-Task 8. New JIRA Project 11. Question
                     # print '---------------------'
