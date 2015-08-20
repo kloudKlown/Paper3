@@ -697,7 +697,6 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
 
         textdel= ""
         variablesdel = ""
-        # print 'abraca dabra'
         for a in addedSplit:
             # print a[-1:] + ' im here'
 
@@ -2422,9 +2421,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # print ' This stayed same for these many commits ,' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) ) + ',' + str(oldlogList[im].churncount)
                 else:
                     changedcount = changedcount + 1
-
-
-
+        # print 'abraca dabra'
 
        # print ' NEW LOG FILE AFTER SWAPS '
         debugEnabled = 1
@@ -2433,7 +2430,6 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
             if nodeList[i].next != None and oldlogList[i].churncount !=0 and debugEnabled:
                 print '---- New Logs ---- '
-
                 c = Node()
                 c = nodeList[i]
                 p = Node()
@@ -2444,6 +2440,8 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     p = c
                     c = p.next
                 print c.data
+                if metricsList[i].logLevelChangeFlag != '':
+                    print metricsList[i].logLevelChangeFlag
                 print metricsList[i].logTextChangeLength 
                 print metricsList[i].logVariableChangeCount
 
