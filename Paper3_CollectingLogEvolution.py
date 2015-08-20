@@ -2429,6 +2429,10 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
        # print ' NEW LOG FILE AFTER SWAPS '
         debugEnabled = 1
         for i in range(len(oldFileLogs.splitlines())) :
+            print metricsNeeded[i].logLevel
+            print metricsNeeded[i].logTextLength
+            print metricsNeeded[i].logVariableCount
+            
             if nodeList[i].next != None and oldlogList[i].churncount !=0 and debugEnabled:
                 print '---- New Logs ---- '
 
