@@ -2426,24 +2426,29 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
        # print ' NEW LOG FILE AFTER SWAPS '
         debugEnabled = 1
         for i in range(len(oldFileLogs.splitlines())) :
-            print oldlogList[i].logLine + ',' +str(metricsList[i].logLevel) + ',' +str(metricsList[i].logTextLength) + ',' +str(metricsList[i].logVariableCount)
+            ### RQ 1 details here ----
+            # print oldlogList[i].logLine + ',' +str(metricsList[i].logLevel) + ',' +str(metricsList[i].logTextLength) + ',' +str(metricsList[i].logVariableCount)
+
+
+            ### RQ 1 ends here !! ----
 
             if nodeList[i].next != None and oldlogList[i].churncount !=0 and debugEnabled:
-                print '---- New Logs ---- '
+                # print '---- New Logs ---- '
                 c = Node()
                 c = nodeList[i]
                 p = Node()
                 while c.next != None:
-                    print c.data
-                    print '     |'
-                    print '     |'
+                    # print c.data
+                    # print '     |'
+                    # print '     |'
                     p = c
                     c = p.next
-                print c.data
+                # print c.data
+                ### Collect all Log level Changes First ### RQ2 Part 1.
                 if metricsList[i].logLevelChangeFlag != '':
                     print metricsList[i].logLevelChangeFlag
-                print metricsList[i].logTextChangeLength 
-                print metricsList[i].logVariableChangeCount
+                # print metricsList[i].logTextChangeLength 
+                # print metricsList[i].logVariableChangeCount
 
 
 
