@@ -624,7 +624,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
     if tmp2[0] == 'fatal':
         metricsNeeded.logLevel = 6
 
-    if len(deletedLog) > 1 and debugEnabled :
+    if len(deletedLog) > 1:
         if tmp2[0] != tmp2Deleted[0]:
 
             print deletedLog
