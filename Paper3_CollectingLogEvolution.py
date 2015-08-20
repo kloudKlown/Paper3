@@ -1333,7 +1333,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
         # ModifiedFile.write('%s \n' % oldFileLogs)
         ############## COllecting all the metrics for the old logs 
         commit123 = "0"
-        for i in range(ka,0,-1):
+        for i in range(ka,-1,-1):
             if re.match('^(LOG|log|logger|Logger|LOGGER).*',oldlogList[i].logLine):
                 GatherMetricsForNotChangedLogs(oldlogList[i].logLine,"",metricsList[i],allCodeChurn,(' commit '+commitNumber ),addedLogLines) 
                # asd = "asd"
