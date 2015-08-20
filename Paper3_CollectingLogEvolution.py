@@ -770,7 +770,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
     else:
             addedLog2 = ''.join(addedLog.split())
 
-
+            # print addedLog2
             t = re.split('\(',addedLog2)
             t = len(t[0]) + 1
 
@@ -803,7 +803,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                         # print a + ' text add'
                         textadd = textadd + a + '\n' 
             metricsNeeded.logTextLength = len(textadd.splitlines())
-            metricsNeeded.logVariableChangeCount =  len(variablesadd.splitlines())
+            metricsNeeded.logVariableCount =  len(variablesadd.splitlines())
             # print '--- single log ---- ' + addedLog
             # print metricsNeeded.logTextLength
             # print metricsNeeded.logVariableChangeCount
