@@ -1919,7 +1919,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # if re.match('.*LOG.*',added):
                     # print added
 
-                    # print addedLoglist[j].logLine + str(lRatio[i][j])
+                    print addedLoglist[j].logLine + str(lRatio[i][j])
                     if re.match('^Commit_Number.*',added):
 
                         ## check till first commit i.e inital file data
@@ -1951,7 +1951,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                             # print addedLoglist[ais].logLine
                             while not re.match('.*Commit_Number.*',addedLoglist[ais].logLine):
                                 ais = ais + 1
-                                print addedLoglist[ais].logLine
+                                # print addedLoglist[ais].logLine
                             commit_deleted = addedLoglist[ais].logLine
                             print ' Get Deleted '+ commit_deleted
                             
