@@ -630,7 +630,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                 print deletedLog
                 print addedLog
                 print 'Log level Change Right ?????'
-            metricsNeeded.logLevelChangeFlag = tmp2Deleted[0] + '-->' + tmp2[0]
+            metricsNeeded.logLevelChangeFlag = metricsNeeded.logLevelChangeFlag + tmp2Deleted[0] + '-->' + tmp2[0] + '-->'
 
     # if  metricsNeeded.logLevel == "0":
     # print addedLog 
@@ -2435,6 +2435,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
         debugEnabled = 1
         for i in range(len(oldFileLogs.splitlines())) :
             ### RQ 1 details here ----
+            if oldlogList[i].churncount !=0:
             print oldlogList[i].logLine + ',' +str(metricsList[i].logLevel) + ',' +str(metricsList[i].logTextLength) + ',' +str(metricsList[i].logVariableCount)
 
 
