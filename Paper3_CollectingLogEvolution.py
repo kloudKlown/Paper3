@@ -2037,7 +2037,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # print commit_deleted
                     # productMetrics(addedLoglist[jm].logLine,deletedLogList[dJ].logLine,metricsList[im],allCodeChurn,commit_deleted)
                     
-                    print str(im) + ' --- Thats index of string' 
+                    # print str(im) + ' --- Thats index of string' 
 
                     ################## over write the old log with the new log obtained     
                     ### Create a ll and put the data in reverse order. So first log is last lement and newest is the first element
@@ -2045,11 +2045,11 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     #nodeList[im] = Node("test")
                     # print nodeList[im] 
                     nodeList[im].data = oldlogList[im].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )
-                    # print nodeList[im]
+                    print nodeList[im].data
                     ##### first create object of type Node and assign the value of log to it
                     newNode = Node(addedLoglist[jm].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )  )
                     newNode.next = None
-                    # print newNode.data
+                    print newNode.data
 
                     # this is the first node
                     if nodeList[im].next == None:
@@ -2082,7 +2082,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         c = Node()  
                         c = nodeList[lp]
                         p = Node()
-                        print lp
+                        # print lp
                         while c.next != None:
                             print c.data + str(lp)
                             print '     |'
