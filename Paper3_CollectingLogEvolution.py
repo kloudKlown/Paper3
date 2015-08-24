@@ -2714,6 +2714,7 @@ for line in diff_file:
                         # print allCodeChurn
                         logFoundFlag =0
                         # print '------------------------------------------ END HERE ---------------------------------------------\n\n\n'
+                        print allCodeChurn
                         gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn)
                         # print alllogLines
                 oldFilePath = newFilePath
