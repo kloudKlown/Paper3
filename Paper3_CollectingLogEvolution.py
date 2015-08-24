@@ -1133,7 +1133,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
     ##### LOG REVISION COUNT
     ##############################################
     tmpF = 0
-    debugEnabled = 1
+    debugEnabled = 0
     if debugEnabled == 1:
         print addedLogLines
     for line in reversed(addedLogLines.splitlines()):
@@ -1188,7 +1188,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
 
             else:
-                # print " THIS DIDNT WORK stopping here and using script to collect the LOGS FROM ADDED LOG "  + commitNumber +':'+ filename
+                print " THIS DIDNT WORK stopping here and using script to collect the LOGS FROM ADDED LOG "  + commitNumber +':'+ filename
                 initalFileFlag = 2
                 break
                 # initalFileFlag = 0
