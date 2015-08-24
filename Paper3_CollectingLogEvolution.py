@@ -1069,8 +1069,8 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
 
 def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
-    print '=----------===--='
-    print addedLogLines
+    # print '=----------===--='
+    # print addedLogLines
     debugEnabled =0
     numberOfCommits = 0
     commitNumber =0
@@ -1244,8 +1244,8 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         oldline = splitline + '\n'
                     oldFileLogs = oldline.lstrip() + oldFileLogs
 
-        print '-------- FROM FILE ---------'
-        print oldFileLogs 
+        # print '-------- FROM FILE ---------'
+        # print oldFileLogs 
 ################## VERIFY IF THE LOG READ BY FILE IS SAME AS ALL LOG LINES THING
 
         for lines in reversed(alllogLines.splitlines()):
@@ -1528,11 +1528,10 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
  # Considering only those commits after the oldFile commit data !! 
 
 ######################################
-        # print addedLogLines
+        print addedLogLines
         for add in addedLogLines.splitlines():
 
             tmp = add.split(' ')
-
             if commitNumber == tmp[-1]:
                 break
 
@@ -1541,6 +1540,8 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
         addedLogLines = tempAdded
 
 #####       
+        print addedLogLines
+
         tempAdded = ""
 ######################################
 
