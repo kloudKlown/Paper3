@@ -2044,7 +2044,8 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     oldlogList[im].churncount =  oldlogList[im].churncount + 1
                     #nodeList[im] = Node("test")
                     # print nodeList[im] 
-                    nodeList[im].data = oldlogList[im].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )
+                    if nodeList[im].data == None:
+                        nodeList[im].data = oldlogList[im].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )
                     print nodeList[im].data
                     ##### first create object of type Node and assign the value of log to it
                     newNode = Node(addedLoglist[jm].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )  )
@@ -2370,7 +2371,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     print 'Before Swap the new Old Log becomes ' + oldlogList[im].logLine 
                     oldlogList[im].logLine = addedLoglist[jm].logLine
                     print 'After Swap the new Old Log becomes ' + oldlogList[im].logLine 
-                    debugEnabled = 1
+                    debugEnabled = 0
                     if debugEnabled:
 
                         c = Node()  
