@@ -1962,7 +1962,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                                 ais = ais + 1
                                 # print addedLoglist[ais].logLine
                             commit_deleted = addedLoglist[ais].logLine
-                            print ' Get Deleted '+ commit_deleted
+                            # print ' Get Deleted '+ commit_deleted
 
 
 
@@ -1981,7 +1981,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                             if  Levenshtein.ratio(commit_deleted,deletedLogList[deletedindex].logLine) > 0.9 and len(commit_deleted) > 15 and deletedindex > 2:
                                 # ais = 1
                                 # print 'Im here '+ deletedLogList[deletedindex].logLine
-                                # print commit_deleted
+                                print commit_deleted
                                 deletedindex = deletedindex - 1
                                 # print deletedLogList[deletedindex].logLine
                                 ######################### LOG MODIFIED OCCURS
