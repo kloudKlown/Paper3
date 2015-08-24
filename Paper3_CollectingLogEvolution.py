@@ -2554,11 +2554,11 @@ for line in diff_file:
 
             # similarityFlag = 0 
             while not re.match('^@@.*',line):
+                print commitNumber
                 line = diff_file.next()
                 allCodeChurn = allCodeChurn + line
                 if re.match('^commit.*',line):
                     commitNumber = line 
-                    print line
                 if re.match('^Date.*',line):
                         getDate = line.split(' ')
                         getDates = getDate[7]
