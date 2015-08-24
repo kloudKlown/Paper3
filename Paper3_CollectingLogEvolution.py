@@ -2436,7 +2436,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
         for i in range(len(oldFileLogs.splitlines())) :
             ### RQ 1 details here ----
             if oldlogList[i].churncount !=0:
-            print oldlogList[i].logLine + ',' +str(metricsList[i].logLevel) + ',' +str(metricsList[i].logTextLength) + ',' +str(metricsList[i].logVariableCount)
+                print oldlogList[i].logLine + ',' +str(metricsList[i].logLevel) + ',' +str(metricsList[i].logTextLength) + ',' +str(metricsList[i].logVariableCount)
 
 
             ### RQ 1 ends here !! ----
