@@ -2037,7 +2037,6 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # print commit_deleted
                     # productMetrics(addedLoglist[jm].logLine,deletedLogList[dJ].logLine,metricsList[im],allCodeChurn,commit_deleted)
                     
-                    print im
                     print str(im) + ' --- Thats index of string' 
 
                     ################## over write the old log with the new log obtained     
@@ -2083,6 +2082,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         c = Node()  
                         c = nodeList[lp]
                         p = Node()
+                        print lp
                         while c.next != None:
                             print c.data + str(lp)
                             print '     |'
