@@ -2554,7 +2554,7 @@ for line in diff_file:
 
             # similarityFlag = 0 
             while not re.match('^@@.*',line):
-                print commitNumber
+                # print commitNumber
                 line = diff_file.next()
                 allCodeChurn = allCodeChurn + line
                 if re.match('^commit.*',line):
@@ -2693,6 +2693,7 @@ for line in diff_file:
                 alllogLines = alllogLines + oldFilePath
                 alllogLines = alllogLines + getDates + ' ' +  getMonth + 'BugId #' + bugId + '\n' 
                 alllogLines = alllogLines + commitNumber
+                print commitNumber
                 addedLogLines = addedLogLines + '\n' + 'Commit_Number ' + commitNumber  + 'BugId #' + bugId + '\n'
                 totalLogLines = totalLogLines + '\n' + 'Commit_Number ' + commitNumber + '\n'
                 deletedLogLines = deletedLogLines  + '\n' + 'Commit_Number ' + commitNumber 
