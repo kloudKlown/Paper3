@@ -2077,7 +2077,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # next node do a recursion ofc
                     if nodeList[im].next != None:
                         curNode = nodeList[im]
-                        # print ' IM HERE  '+ curNode.data  
+                        print ' IM HERE  '+ curNode.data  
                         while curNode.next != None:
                             prevNode = curNode
                             curNode = curNode.next
