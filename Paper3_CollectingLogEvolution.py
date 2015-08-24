@@ -2077,7 +2077,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                             # prevNode.prev = 
                         curNode.next = newNode
                         newNode.next = None
-                        # print curNode.data
+                        print curNode.data
                     # metricsList[im].typeoflogchange = 'b'
                     metricsList[im].typeoflogchange = LogChangeType(oldlogList[im].logLine,addedLoglist[jm].logLine)  
 
