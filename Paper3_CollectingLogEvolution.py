@@ -1188,7 +1188,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
 
             else:
-                print " THIS DIDNT WORK stopping here and using script to collect the LOGS FROM ADDED LOG "  + commitNumber +':'+ filename
+                # print " THIS DIDNT WORK stopping here and using script to collect the LOGS FROM ADDED LOG "  + commitNumber +':'+ filename
                 initalFileFlag = 2
                 break
                 # initalFileFlag = 0
@@ -1243,6 +1243,8 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         oldline = splitline + '\n'
                     oldFileLogs = oldline.lstrip() + oldFileLogs
 
+        print '-------- FROM FILE ---------'
+        print oldFileLogs 
 ################## VERIFY IF THE LOG READ BY FILE IS SAME AS ALL LOG LINES THING
 
         for lines in reversed(alllogLines.splitlines()):
