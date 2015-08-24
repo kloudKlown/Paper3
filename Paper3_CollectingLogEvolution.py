@@ -2306,9 +2306,9 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         print metricsList[im].PriorityList
                         print metricsList[im].DeveloperDetails
 
-
+                    print 'Before Swap the new Old Log becomes ' + oldlogList[im].logLine 
                     oldlogList[im].logLine = addedLoglist[jm].logLine
-                    # print 'After Swap the new Old Log becomes ' + oldlogList[im].logLine 
+                    print 'After Swap the new Old Log becomes ' + oldlogList[im].logLine 
 
                     ik = 0
                     for old in oldFileLogs.splitlines():                   
