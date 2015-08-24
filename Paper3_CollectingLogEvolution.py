@@ -1976,7 +1976,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         for deletedindex in range(len(deletedLogList)):
 
                             # print commit_deleted
-                            print 'Deleted -- > '+deletedLogList[deletedindex].logLine
+                            # print 'Deleted -- > '+deletedLogList[deletedindex].logLine
                             # print 'At Commit -- > ' + commit_deleted
                             if  Levenshtein.ratio(commit_deleted,deletedLogList[deletedindex].logLine) > 0.9 and len(commit_deleted) > 15 and deletedindex >= 2:
                                 # ais = 1
@@ -2038,12 +2038,13 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # productMetrics(addedLoglist[jm].logLine,deletedLogList[dJ].logLine,metricsList[im],allCodeChurn,commit_deleted)
                     
 
-                ################### over write the old log with the new log obtained     
-                #### Create a ll and put the data in reverse order. So first log is last lement and newest is the first element
+                    ################## over write the old log with the new log obtained     
+                    ### Create a ll and put the data in reverse order. So first log is last lement and newest is the first element
                     oldlogList[im].churncount =  oldlogList[im].churncount + 1
                     #nodeList[im] = Node("test")
                     # print nodeList[im] 
                     nodeList[im].data = oldlogList[im].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )
+                    print nodeList[im]
                     ##### first create object of type Node and assign the value of log to it
                     newNode = Node(addedLoglist[jm].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )  )
 
