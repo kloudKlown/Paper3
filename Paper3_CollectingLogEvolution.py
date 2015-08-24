@@ -2699,6 +2699,7 @@ for line in diff_file:
                 totalLogLines = totalLogLines + '\n' + 'Commit_Number ' + commitNumber + '\n'
                 deletedLogLines = deletedLogLines  + '\n' + 'Commit_Number ' + commitNumber 
                 print addedLogLines
+                
                 editedCodeLines =0
                 newCommitFlag = 0
                     
