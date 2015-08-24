@@ -2082,10 +2082,25 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                             prevNode = curNode
                             curNode = curNode.next
                             # prevNode.prev = 
-                        # print curNode.data
+                        print curNode.data
                         curNode.next = newNode
                         newNode.next = None
-                        
+                    
+                    lp = im
+                    debugEnabled =  1                    
+                    if debugEnabled:
+
+                        c = Node()  
+                        c = nodeList[lp]
+                        p = Node()
+                        while c.next != None:
+                            print c.data
+                            print '     |'
+                            print '     |'
+                            p = c
+                            c = p.next
+                        print c.data
+
                     # metricsList[im].typeoflogchange = 'b'
                     metricsList[im].typeoflogchange = LogChangeType(oldlogList[im].logLine,addedLoglist[jm].logLine)  
 
@@ -2467,7 +2482,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
         for i in range(len(oldFileLogs.splitlines())) :
             ### RQ 1 details here ----
             # if oldlogList[i].churncount !=0:
-            print oldlogList[i].logLine + ',' +str(metricsList[i].logLevel) + ',' +str(metricsList[i].logTextLength) + ',' +str(metricsList[i].logVariableCount)
+                # print oldlogList[i].logLine + ',' +str(metricsList[i].logLevel) + ',' +str(metricsList[i].logTextLength) + ',' +str(metricsList[i].logVariableCount)
 
             if nodeList[i].next != None and oldlogList[i].churncount !=0 and debugEnabled:
                 print '---- New Logs ---- '
