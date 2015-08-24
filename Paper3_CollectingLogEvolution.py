@@ -1984,9 +1984,11 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                                     # print deletedLogList[deletedindex].logLine
 
                                     if Levenshtein.ratio(oldlogList[i].logLine,deletedLogList[deletedindex].logLine ) > 0.9:
-                                        # print ' Matched deleted ------------------ '
-                                        ModifiedFile.write('----------------')
-                                        ModifiedFile.write(' \n %s \n %s \n %s \n' %(oldlogList[i].logLine,addedLoglist[j].logLine,commitMatchCount) )                                        # print deletedLogList[deletedindex].logLine
+                                        print ' Matched deleted ------------------ '
+                                        print oldlogList[i].logLine
+                                        print deletedLogList[deletedindex].logLine 
+                                        # ModifiedFile.write('----------------')
+                                        # ModifiedFile.write(' \n %s \n %s \n %s \n' %(oldlogList[i].logLine,addedLoglist[j].logLine,commitMatchCount) )                                        # print deletedLogList[deletedindex].logLine
 
 
                                         dJ = deletedindex
