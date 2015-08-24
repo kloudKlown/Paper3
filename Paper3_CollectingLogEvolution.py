@@ -2795,7 +2795,7 @@ for line in diff_file:
                 print commitNumber
 
                 if added_log.match(line) or deleted_log.match(line):
-                #    print line
+                    print line
                     if not next_line_patterns.match(line):
                             next2=line
                 #           print line
