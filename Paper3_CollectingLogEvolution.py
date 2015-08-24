@@ -2049,7 +2049,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     ##### first create object of type Node and assign the value of log to it
                     newNode = Node(addedLoglist[jm].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )  )
                     newNode.next = None
-                    print newNode.data
+                    print newNode.dateMatch
 
                     # this is the first node
                     if nodeList[im].next == None:
@@ -2370,6 +2370,20 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     print 'Before Swap the new Old Log becomes ' + oldlogList[im].logLine 
                     oldlogList[im].logLine = addedLoglist[jm].logLine
                     print 'After Swap the new Old Log becomes ' + oldlogList[im].logLine 
+
+                    if debugEnabled:
+
+                        c = Node()  
+                        c = nodeList[lp]
+                        p = Node()
+                        while c.next != None:
+                            print c.data + str(lp)
+                            print '     |'
+                            print '     |'
+                            p = c
+                            c = p.next
+                        print c.data
+
 
                     ik = 0
                     for old in oldFileLogs.splitlines():                   
