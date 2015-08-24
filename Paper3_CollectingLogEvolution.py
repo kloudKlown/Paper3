@@ -1612,6 +1612,10 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
             print '------------------------------------------------------------------------'
             print addedLogLines
 
+            print '------------------------------------------------------------------------'
+            print deletedLogLines
+
+
         debugEnabled = 0
         ModifiedFile.write('---------------- OLDLOGS -----------\n')
         ModifiedFile.write('%s \n\n -------- NEW LOGS --------  %s \n ' %(oldFileLogs,addedLogLines) )
@@ -1903,8 +1907,8 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                 bugId = ""
                 # Did = 0
                 # foundDeleted = 0
-                print '----------------------------- Matching Log Line OLD LOG -------------------------------------------'
-                print oldlogList[i].logLine
+                # print '----------------------------- Matching Log Line OLD LOG -------------------------------------------'
+                # print oldlogList[i].logLine
                 #print  lRatio[i][j]
 
                 for added in reversed(addedLogLines.splitlines()):
