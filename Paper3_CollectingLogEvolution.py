@@ -2102,6 +2102,20 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         curNode.next = newNode
                         newNode.next = None
                     
+                    lp = im
+                    debugEnabled =  1                    
+                    if debugEnabled:
+
+                        c = Node()  
+                        c = nodeList[lp]
+                        p = Node()
+                        while c.next != None:
+                            print c.data + str(lp)
+                            print '     |'
+                            print '     |'
+                            p = c
+                            c = p.next
+                        print c.data
 
 
                     # metricsList[im].typeoflogchange = 'b'
