@@ -2698,23 +2698,19 @@ for line in diff_file:
                 addedLogLines = addedLogLines + '\n' + 'Commit_Number ' + commitNumber  + 'BugId #' + bugId + '\n'
                 totalLogLines = totalLogLines + '\n' + 'Commit_Number ' + commitNumber + '\n'
                 deletedLogLines = deletedLogLines  + '\n' + 'Commit_Number ' + commitNumber 
-                print addedLogLines
 
                 editedCodeLines =0
                 newCommitFlag = 0
-                    
-                    #print dateMatch
 
-            # if  oldFilePath != newFilePath and logFoundFlag == 1:
-            #     print ' Im here checking ' + oldFilePath + ' new ' + newFilePath
-                     
             if oldFilePath != newFilePath and newCommitFlag == 1 and dateMatch == 1:
                   #  if similarity == 1:
                 # print oldFilePath + ' New Path is ' + newFilePath +  ' Is Date Mactched ?? '+str(logFoundFlag)
                 # print line
+                
                 alllogLines = alllogLines + 'Code Churn In Commit --- ' + str(editedCodeLines) + '\n'
                 addedLogLines = addedLogLines + '\n' + 'Commit_Number ' + commitNumber  + 'BugId #' + bugId + '\n'
                 deletedLogLines = deletedLogLines  + '\n' + 'Commit_Number ' + commitNumber 
+                print addedLogLines
 
                 if logFoundFlag == 1:
                         # print ' Just Before Printing here '
@@ -2744,38 +2740,17 @@ for line in diff_file:
                 dumpFlag = 1
                     
                 #print dateMatch
-
-
         ############################################
         ############################################
         ############################################
         ############################################
         ############################################
-        # this covers only colelcting the header information 
-
-        # if collectingContextDataFlag == 1:
-        #     if re.match('^@@.*',line):
-        #         # print '----- New Conext Starts here -----'
-        #         # print logcontextData
-        #         logcontextData = ""
-        #         collectingContextDataFlag = 0
-
-        # if collectingContextDataFlag == 1:
-        #     logcontextData = logcontextData + line
-
         if re.match('^@@.*',line) :
                 lineEditNumber = line
                 # copying all the changes to this variable
                 # logcontextData = logcontextData + line
 
                 # collectingContextDataFlag = 1
-
-
-
-
-
-
-
 
 ######################################################
 ######################################################
