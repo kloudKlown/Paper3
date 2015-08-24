@@ -2370,7 +2370,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     print 'Before Swap the new Old Log becomes ' + oldlogList[im].logLine 
                     oldlogList[im].logLine = addedLoglist[jm].logLine
                     print 'After Swap the new Old Log becomes ' + oldlogList[im].logLine 
-
+                    debugEnabled = 1
                     if debugEnabled:
 
                         c = Node()  
