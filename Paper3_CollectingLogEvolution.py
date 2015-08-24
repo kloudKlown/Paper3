@@ -2713,6 +2713,9 @@ for line in diff_file:
                 # print oldFilePath + ' New Path is ' + newFilePath +  ' Is Date Mactched ?? '+str(logFoundFlag)
                 # print line
                 alllogLines = alllogLines + 'Code Churn In Commit --- ' + str(editedCodeLines) + '\n'
+                addedLogLines = addedLogLines + '\n' + 'Commit_Number ' + commitNumber  + 'BugId #' + bugId + '\n'
+                deletedLogLines = deletedLogLines  + '\n' + 'Commit_Number ' + commitNumber 
+
                 if logFoundFlag == 1:
                         # print ' Just Before Printing here '
                         # print alllogLines
@@ -2832,7 +2835,7 @@ for line in diff_file:
 
                     #        print line
                             alllogLines = alllogLines + excludedLogLine.strip() + '--------' + lineEditNumber
-                            print ' -TEST-- ' + excludedLogLine
+                            # print ' -TEST-- ' + excludedLogLine
                     if  deleted_log.match(excludedLogLine):
                             #print "EXCLUDED LOG LINE ---- > " + excludedLogLine
 
@@ -2850,7 +2853,7 @@ for line in diff_file:
                             addedLogLines = addedLogLines + line.lstrip('+|-').strip() + '\n'
                             alllogLines = alllogLines + line.strip() + '--------' + lineEditNumber
                             totalLogLines = totalLogLines + line.lstrip('+|-').strip() + '\n'
-                            print '  -TEST-- ' + line
+                            # print '  -TEST-- ' + line
                     if  deleted_log.match(line):
                             logFoundFlag = 1
                             alllogLines = alllogLines + line.strip() + '--------' + lineEditNumber
