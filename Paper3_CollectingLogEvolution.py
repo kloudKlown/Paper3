@@ -2558,6 +2558,7 @@ for line in diff_file:
                 allCodeChurn = allCodeChurn + line
                 if re.match('^commit.*',line):
                     commitNumber = line 
+                    print line
                 if re.match('^Date.*',line):
                         getDate = line.split(' ')
                         getDates = getDate[7]
@@ -2714,7 +2715,7 @@ for line in diff_file:
                         # print allCodeChurn
                         logFoundFlag =0
                         # print '------------------------------------------ END HERE ---------------------------------------------\n\n\n'
-                        print allCodeChurn
+                        # print allCodeChurn
                         gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn)
                         # print alllogLines
                 oldFilePath = newFilePath
