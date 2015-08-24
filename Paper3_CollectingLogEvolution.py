@@ -1951,9 +1951,9 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                             # print addedLoglist[ais].logLine
                             while not re.match('.*Commit_Number.*',addedLoglist[ais].logLine):
                                 ais = ais + 1
-                                # print addedLoglist[ais].logLine
+                                print addedLoglist[ais].logLine
                             commit_deleted = addedLoglist[ais].logLine
-                            # print ' Get Deleted '+ commit_deleted
+                            print ' Get Deleted '+ commit_deleted
                             
                         if commitMatchCount == x:
                             # print str(x) + ' x and commit count ' + str(commitMatchCount)
