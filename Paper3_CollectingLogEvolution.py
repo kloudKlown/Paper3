@@ -2435,7 +2435,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
         loglevelFile = open('LogLevel_ManualStudy.txt','ab+')
 
        # print ' NEW LOG FILE AFTER SWAPS '
-        print oldFileLogs
+        # print oldFileLogs
         debugEnabled = 1
         for i in range(len(oldFileLogs.splitlines())) :
             ### RQ 1 details here ----
