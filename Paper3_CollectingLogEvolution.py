@@ -2037,6 +2037,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # print commit_deleted
                     # productMetrics(addedLoglist[jm].logLine,deletedLogList[dJ].logLine,metricsList[im],allCodeChurn,commit_deleted)
                     
+                    print str(im) + ' --- Thats index of string' 
 
                     ################## over write the old log with the new log obtained     
                     ### Create a ll and put the data in reverse order. So first log is last lement and newest is the first element
