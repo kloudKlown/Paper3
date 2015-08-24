@@ -2000,7 +2000,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                                         foundDeleted = 1
                                     deletedindex  =    deletedindex - 1
 
-                                    if deletedindex == 0
+                                    if deletedindex == 0:
                                         break
                                 break                                     
 
