@@ -1976,7 +1976,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         for deletedindex in range(len(deletedLogList)):
 
                             # print commit_deleted
-                            # print 'Deleted -- > '+deletedLogList[deletedindex].logLine
+                            print 'Deleted -- > '+deletedLogList[deletedindex].logLine
                             # print 'At Commit -- > ' + commit_deleted
                             if  Levenshtein.ratio(commit_deleted,deletedLogList[deletedindex].logLine) > 0.9 and len(commit_deleted) > 15 and deletedindex > 2:
                                 # ais = 1
