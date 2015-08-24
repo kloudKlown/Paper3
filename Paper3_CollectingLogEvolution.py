@@ -2699,7 +2699,7 @@ for line in diff_file:
                 totalLogLines = totalLogLines + '\n' + 'Commit_Number ' + commitNumber + '\n'
                 deletedLogLines = deletedLogLines  + '\n' + 'Commit_Number ' + commitNumber 
                 print addedLogLines
-                
+
                 editedCodeLines =0
                 newCommitFlag = 0
                     
@@ -2792,6 +2792,8 @@ for line in diff_file:
 
 # catch the added and deleted Log lines and code lines.
         if added_code.match(line) or deleted_code.match(line):
+                print commitNumber
+
                 if added_log.match(line) or deleted_log.match(line):
                 #    print line
                     if not next_line_patterns.match(line):
