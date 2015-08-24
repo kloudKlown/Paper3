@@ -1635,6 +1635,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
             b=0
             ik = 0
             newlogadded = 0
+            #### ADDING LOGS WHICH ARE ADDED IN MIDDLE OF DEVELOPMENT CYCLE 
             for add in reversed(addedLogLines.splitlines()):
                 if addedLoglist[b].churncount == -1 and re.match('^(LOG|log|logger|Logger|LOGGER).*',add):
                     # print len(oldFileLogs.splitlines())
@@ -1680,7 +1681,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # print tmp 
                     # print add 
                     p = commands.getoutput('git show %s:%s > junk2'%(tmp,filename))
-            # print p
+                # print p
                     if "fatal" not in p:
                         os.system('git show %s:%s > junk2'%(tmp,filename))
                         os.system(' sed -i \'s/s_logger/logger/g\' junk2')
@@ -1716,8 +1717,8 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         ModifiedFile.write('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')           
                         ModifiedFile.write('%s \n' % addedLogLines)
 
-############################ 
-# Finding Issue Id\s
+                    ############################ 
+                    # Finding Issue Id\s
                     l = ""
                     jkBugList= 0
                     bugId = ""
@@ -1830,7 +1831,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
 
 
-##########################
+                    ##########################
 
                     oldlogList[len(oldFileLogs.splitlines()) - 1].logLine = add.lstrip()
                     oldlogList[len(oldFileLogs.splitlines()) - 1].commitCountOld = x
@@ -1902,8 +1903,8 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                 bugId = ""
                 # Did = 0
                 # foundDeleted = 0
-                # print '------------------------------------------------------------------------'
-                # print oldlogList[i].logLine
+                print '----------------------------- Matching Log Line OLD LOG -------------------------------------------'
+                print oldlogList[i].logLine
                 #print  lRatio[i][j]
 
                 for added in reversed(addedLogLines.splitlines()):
@@ -1959,7 +1960,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         if totalcommits == 2:
                             foundDeleted = 1
                         # ais = 0
-                        # print oldlogList[i].logLine + '---- ' + addedLoglist[j].logLine
+                        print oldlogList[i].logLine + '---- ' + addedLoglist[j].logLine
                         for deletedindex in range(len(deletedLogList)):
                             # print commit_deleted
                             # print 'Deleted -- > '+deletedLogList[deletedindex].logLine
