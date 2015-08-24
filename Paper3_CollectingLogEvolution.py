@@ -1133,7 +1133,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
     ##### LOG REVISION COUNT
     ##############################################
     tmpF = 0
-    debugEnabled = 0
+    debugEnabled = 1
     if debugEnabled == 1:
         print addedLogLines
     for line in reversed(addedLogLines.splitlines()):
@@ -2706,7 +2706,7 @@ for line in diff_file:
                   #  if similarity == 1:
                 # print oldFilePath + ' New Path is ' + newFilePath +  ' Is Date Mactched ?? '+str(logFoundFlag)
                 # print line
-                
+
                 alllogLines = alllogLines + 'Code Churn In Commit --- ' + str(editedCodeLines) + '\n'
                 addedLogLines = addedLogLines + '\n' + 'Commit_Number ' + commitNumber  + 'BugId #' + bugId + '\n'
                 deletedLogLines = deletedLogLines  + '\n' + 'Commit_Number ' + commitNumber 
