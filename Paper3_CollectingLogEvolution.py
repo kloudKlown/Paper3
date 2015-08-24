@@ -2082,7 +2082,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         c = nodeList[lp]
                         p = Node()
                         while c.next != None:
-                            print c.data
+                            print c.data + str(lp)
                             print '     |'
                             print '     |'
                             p = c
