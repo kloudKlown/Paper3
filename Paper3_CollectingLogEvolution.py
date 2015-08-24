@@ -2047,14 +2047,14 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # print nodeList[im]
                     ##### first create object of type Node and assign the value of log to it
                     newNode = Node(addedLoglist[jm].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )  )
-
+                    newNode.next = None
                     # print newNode.data
 
                     # this is the first node
                     if nodeList[im].next == None:
                         nodeList[im].next =  newNode
 
-                                            
+
                     ##### GET THE BUG ID AND SEE WHAT TYPE OF FIX THIS IS
                     # print bugId
                     bugList = open('BugList.txt','r')
