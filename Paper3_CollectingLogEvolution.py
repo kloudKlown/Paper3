@@ -1069,7 +1069,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
 
 def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
-
+    print '=----------===--='
     print addedLogLines
     debugEnabled =0
     numberOfCommits = 0
