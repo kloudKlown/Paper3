@@ -1972,7 +1972,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                             foundDeleted = 1
                         # ais = 0
                         print oldlogList[i].logLine + '---- ' + addedLoglist[j].logLine
-                        print commit_deleted
+                        # print commit_deleted
                         for deletedindex in range(len(deletedLogList)):
 
                             # print commit_deleted
