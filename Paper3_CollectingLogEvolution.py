@@ -1919,7 +1919,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # if re.match('.*LOG.*',added):
                     # print added
 
-                    print addedLoglist[j].logLine + str(lRatio[i][j])
+                    # print addedLoglist[j].logLine + str(lRatio[i][j])
     
 
 
