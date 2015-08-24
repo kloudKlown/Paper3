@@ -1528,7 +1528,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
  # Considering only those commits after the oldFile commit data !! 
 
 ######################################
-        print addedLogLines
+        # print addedLogLines
         for add in addedLogLines.splitlines():
 
             tmp = add.split(' ')
@@ -1540,7 +1540,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
         addedLogLines = tempAdded
 
 #####       
-        print addedLogLines
+        # print addedLogLines
 
         tempAdded = ""
 ######################################
@@ -2697,7 +2697,7 @@ for line in diff_file:
                 alllogLines = alllogLines + oldFilePath
                 alllogLines = alllogLines + getDates + ' ' +  getMonth + 'BugId #' + bugId + '\n' 
                 alllogLines = alllogLines + commitNumber
-                print commitNumber
+                # print commitNumber
                 # print 
                 addedLogLines = addedLogLines + '\n' + 'Commit_Number ' + commitNumber  + 'BugId #' + bugId + '\n'
                 totalLogLines = totalLogLines + '\n' + 'Commit_Number ' + commitNumber + '\n'
