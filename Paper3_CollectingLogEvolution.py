@@ -2792,7 +2792,7 @@ for line in diff_file:
 
 # catch the added and deleted Log lines and code lines.
         if added_code.match(line) or deleted_code.match(line):
-                print commitNumber
+                # print commitNumber
 
                 if added_log.match(line) or deleted_log.match(line):
                     # print line
@@ -2832,7 +2832,7 @@ for line in diff_file:
 
                     #        print line
                             alllogLines = alllogLines + excludedLogLine.strip() + '--------' + lineEditNumber
-                            print addedLogLines
+                            # print addedLogLines
                     if  deleted_log.match(excludedLogLine):
                             #print "EXCLUDED LOG LINE ---- > " + excludedLogLine
 
@@ -2850,7 +2850,7 @@ for line in diff_file:
                             addedLogLines = addedLogLines + line.lstrip('+|-').strip() + '\n'
                             alllogLines = alllogLines + line.strip() + '--------' + lineEditNumber
                             totalLogLines = totalLogLines + line.lstrip('+|-').strip() + '\n'
-                            print addedLogLines
+                            # print addedLogLines
                     if  deleted_log.match(line):
                             logFoundFlag = 1
                             alllogLines = alllogLines + line.strip() + '--------' + lineEditNumber
