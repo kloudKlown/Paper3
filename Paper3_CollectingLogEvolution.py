@@ -2048,6 +2048,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     ##### first create object of type Node and assign the value of log to it
                     newNode = Node(addedLoglist[jm].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )  )
 
+                    print newNode.data
                     ##### GET THE BUG ID AND SEE WHAT TYPE OF FIX THIS IS
                     # print bugId
                     bugList = open('BugList.txt','r')
