@@ -1922,19 +1922,6 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     print addedLoglist[j].logLine + str(lRatio[i][j])
     
 
-                    ### IM Getting the commit number til i check here . So it should be done everytime as in corner cases like beginning of file where there is no commits
-                    ## this is skipped and commit deleted is never found. Other times it just keeps finding commit_deleted
-                    
-                    if (commitMatchCount + 1)  == x:
-                            # print 'IM here'
-                            ###just get commit number here
-                            ais = j + 1 
-                            # print addedLoglist[ais].logLine
-                            while not re.match('.*Commit_Number.*',addedLoglist[ais].logLine):
-                                ais = ais + 1
-                                # print addedLoglist[ais].logLine
-                            commit_deleted = addedLoglist[ais].logLine
-                            print ' Get Deleted '+ commit_deleted
 
                     if re.match('^Commit_Number.*',added):
 
@@ -1957,16 +1944,25 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         temp4 = addedLoglist[j-1].logLine.split('#')
                         bugId = temp4[-1]
                         #print 'Test' + bugId
-
-
-
-
-                            
+                           
                         if commitMatchCount == x:
                             # print str(x) + ' x and commit count ' + str(commitMatchCount)
                             # print added
                             break
 
+                    ### IM Getting the commit number til i check here . So it should be done everytime as in corner cases like beginning of file where there is no commits
+                    ## this is skipped and commit deleted is never found. Other times it just keeps finding commit_deleted
+
+                    if (commitMatchCount + 1)  == x:
+                            # print 'IM here'
+                            ###just get commit number here
+                            ais = j + 1 
+                            # print addedLoglist[ais].logLine
+                            while not re.match('.*Commit_Number.*',addedLoglist[ais].logLine):
+                                ais = ais + 1
+                                # print addedLoglist[ais].logLine
+                            commit_deleted = addedLoglist[ais].logLine
+                            print ' Get Deleted '+ commit_deleted
 
 
 
