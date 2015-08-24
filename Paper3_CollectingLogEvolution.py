@@ -2708,9 +2708,9 @@ for line in diff_file:
                 # print line
 
                 alllogLines = alllogLines + 'Code Churn In Commit --- ' + str(editedCodeLines) + '\n'
-                addedLogLines = addedLogLines + '\n' + 'Commit_Number ' + commitNumber  + 'BugId #' + bugId + '\n'
-                deletedLogLines = deletedLogLines  + '\n' + 'Commit_Number ' + commitNumber 
-                print addedLogLines
+                # addedLogLines = addedLogLines + '\n' + 'Commit_Number ' + commitNumber  + 'BugId #' + bugId + '\n'
+                # deletedLogLines = deletedLogLines  + '\n' + 'Commit_Number ' + commitNumber 
+                # print addedLogLines
 
                 if logFoundFlag == 1:
                         # print ' Just Before Printing here '
