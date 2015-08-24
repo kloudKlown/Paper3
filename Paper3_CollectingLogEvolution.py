@@ -2044,11 +2044,17 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     #nodeList[im] = Node("test")
                     # print nodeList[im] 
                     nodeList[im].data = oldlogList[im].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )
-                    print nodeList[im]
+                    # print nodeList[im]
                     ##### first create object of type Node and assign the value of log to it
                     newNode = Node(addedLoglist[jm].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )  )
 
-                    print newNode.data
+                    # print newNode.data
+
+                    # this is the first node
+                    if nodeList[im].next == None:
+                        nodeList[im].next =  newNode
+
+                                            
                     ##### GET THE BUG ID AND SEE WHAT TYPE OF FIX THIS IS
                     # print bugId
                     bugList = open('BugList.txt','r')
@@ -2071,7 +2077,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # next node do a recursion ofc
                     if nodeList[im].next != None:
                         curNode = nodeList[im]
-                        print ' IM HERE  '+ curNode.data  
+                        # print ' IM HERE  '+ curNode.data  
                         while curNode.next != None:
                             prevNode = curNode
                             curNode = curNode.next
@@ -2086,9 +2092,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         metricsList[im].typeoflogchange = "b"
 
                     # print metricsList[im].typeoflogchange
-                    # this is the first node
-                    if nodeList[im].next == None:
-                        nodeList[im].next =  newNode
+
                     debugEnabled =1
 
 
