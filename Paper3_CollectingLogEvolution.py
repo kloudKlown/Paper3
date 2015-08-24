@@ -2432,18 +2432,16 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
         loglevelFile = open('LogLevel_ManualStudy.txt','ab+')
 
        # print ' NEW LOG FILE AFTER SWAPS '
+        print oldFileLogs
         debugEnabled = 1
         for i in range(len(oldFileLogs.splitlines())) :
             ### RQ 1 details here ----
             if oldlogList[i].churncount !=0:
                 print oldlogList[i].logLine + ',' +str(metricsList[i].logLevel) + ',' +str(metricsList[i].logTextLength) + ',' +str(metricsList[i].logVariableCount)
 
-
-            ### RQ 1 ends here !! ----
-
             if nodeList[i].next != None and oldlogList[i].churncount !=0 and debugEnabled:
                 print '---- New Logs ---- '
-                c = Node()
+                c = Node()  
                 c = nodeList[i]
                 p = Node()
                 while c.next != None:
@@ -2459,9 +2457,6 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     loglevelFile.write('%s \n'%oldlogList[i].logLine)
                     loglevelFile.write('%s \n'%allCodeChurn)
                     print metricsList[i].logLevelChangeFlag
-                # print metricsList[i].logTextChangeLength 
-                # print metricsList[i].logVariableChangeCount
-
 
 
 
