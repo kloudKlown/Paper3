@@ -2072,20 +2072,8 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
 
                     curNode = Node()
-                    prevNode= Node()
+                    prevNode= Node()    
 
-                    # next node do a recursion ofc
-                    if nodeList[im].next != None:
-                        curNode = nodeList[im]
-                        print ' IM HERE  '+ curNode.data  
-                        while curNode.next != None:
-                            prevNode = curNode
-                            curNode = curNode.next
-                            # prevNode.prev = 
-                        print curNode.data
-                        curNode.next = newNode
-                        newNode.next = None
-                    
                     lp = im
                     debugEnabled =  1                    
                     if debugEnabled:
@@ -2100,6 +2088,21 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                             p = c
                             c = p.next
                         print c.data
+
+
+                    # next node do a recursion ofc
+                    if nodeList[im].next != None:
+                        curNode = nodeList[im]
+                        print ' IM HERE  '+ curNode.data  
+                        while curNode.next != None:
+                            prevNode = curNode
+                            curNode = curNode.next
+                            # prevNode.prev = 
+                        print curNode.data
+                        curNode.next = newNode
+                        newNode.next = None
+                    
+
 
                     # metricsList[im].typeoflogchange = 'b'
                     metricsList[im].typeoflogchange = LogChangeType(oldlogList[im].logLine,addedLoglist[jm].logLine)  
