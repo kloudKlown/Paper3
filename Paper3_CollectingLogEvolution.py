@@ -1972,7 +1972,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                             foundDeleted = 1
                         # ais = 0
                         print oldlogList[i].logLine + '---- ' + addedLoglist[j].logLine
-                        print commit_deleted
+                        # print commit_deleted
                         for deletedindex in range(len(deletedLogList)):
 
                             # print commit_deleted
@@ -1981,7 +1981,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                             if  Levenshtein.ratio(commit_deleted,deletedLogList[deletedindex].logLine) > 0.9 and len(commit_deleted) > 15 and deletedindex >= 2:
                                 # ais = 1
                                 # print 'Im here '+ deletedLogList[deletedindex].logLine
-                                print commit_deleted
+                                # print commit_deleted
                                 deletedindex = deletedindex - 1
                                 # print deletedLogList[deletedindex].logLine
                                 ######################### LOG MODIFIED OCCURS
@@ -1989,9 +1989,9 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                                     # print deletedLogList[deletedindex].logLine
 
                                     if Levenshtein.ratio(oldlogList[i].logLine,deletedLogList[deletedindex].logLine ) > 0.9:
-                                        print ' Matched deleted ------------------ '
-                                        print oldlogList[i].logLine
-                                        print deletedLogList[deletedindex].logLine 
+                                        # print ' Matched deleted ------------------ '
+                                        # print oldlogList[i].logLine
+                                        # print deletedLogList[deletedindex].logLine 
                                         # ModifiedFile.write('----------------')
                                         # ModifiedFile.write(' \n %s \n %s \n %s \n' %(oldlogList[i].logLine,addedLoglist[j].logLine,commitMatchCount) )                                        # print deletedLogList[deletedindex].logLine
 
