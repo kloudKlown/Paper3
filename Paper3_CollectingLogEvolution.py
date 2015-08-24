@@ -1604,12 +1604,15 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
         
         # # print '------------------------------------------------------------------------'
 
-        # print '------------------------------------------------------------------------'
-        # print oldFileLogs
+        debugEnabled =1
+        if debugEnabled: 
+            print '------------------------------------------------------------------------'
+            print oldFileLogs
 
-        # print '------------------------------------------------------------------------'
-        # print addedLogLines
+            print '------------------------------------------------------------------------'
+            print addedLogLines
 
+        debugEnabled = 0
         ModifiedFile.write('---------------- OLDLOGS -----------\n')
         ModifiedFile.write('%s \n\n -------- NEW LOGS --------  %s \n ' %(oldFileLogs,addedLogLines) )
         # print '------------------------------------------------------------------------'
@@ -2436,8 +2439,8 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
         debugEnabled = 1
         for i in range(len(oldFileLogs.splitlines())) :
             ### RQ 1 details here ----
-            if oldlogList[i].churncount !=0:
-                print oldlogList[i].logLine + ',' +str(metricsList[i].logLevel) + ',' +str(metricsList[i].logTextLength) + ',' +str(metricsList[i].logVariableCount)
+            # if oldlogList[i].churncount !=0:
+                # print oldlogList[i].logLine + ',' +str(metricsList[i].logLevel) + ',' +str(metricsList[i].logTextLength) + ',' +str(metricsList[i].logVariableCount)
 
             if nodeList[i].next != None and oldlogList[i].churncount !=0 and debugEnabled:
                 print '---- New Logs ---- '
