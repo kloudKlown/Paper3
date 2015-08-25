@@ -4,7 +4,6 @@ import subprocess
 import commands
 from datetime import datetime
 import Levenshtein
-import msvcrt 
 
 
 # log4j_add = re.compile(r'.*(action=\"A\").*(log4j).*(\.jar).*')
@@ -2106,7 +2105,9 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
                     if  metricsList[im].typeoflogchange =='t':
                         print tmp[-1]
-                        input('test if this works !!')
+                            # input('test if this works')
+                        os.system('read -s -n 1 -p "Press any key to continue..."')
+
                             # oldlogList[im].logLine,addedLoglist[jm].logLine
                         StaticTextCheck(addedLoglist[jm].logLine,oldlogList[im].logLine,allCodeChurn,metricsNeeded,(' commit '+tmp[-1]))
 
