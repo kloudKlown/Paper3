@@ -2105,6 +2105,8 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
                     if  metricsList[im].typeoflogchange =='t':
                         print tmp[-1]
+                        if input() == 1:
+                            continue
                         # input('test if this works')
                         os.system('read -p "Press any key to continue"')
                             # oldlogList[im].logLine,addedLoglist[jm].logLine
