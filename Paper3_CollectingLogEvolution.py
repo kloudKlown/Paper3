@@ -212,7 +212,7 @@ def LogChangeType(addedLogLines,deletedLogLines):
             # print deletedLogList[delete]
             # print Levenshtein.distance(addedLoglist[add],deletedLogList[delete])
 
-            
+
             # print aloglevel
             # print dloglevel
             # print Levenshtein.distance(aloglevel,dloglevel)
@@ -554,11 +554,14 @@ def LogChangeType(addedLogLines,deletedLogLines):
 
 
 
+def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added):
+    debugEnabled = 1
 
 
-
-
-    # return (textchange,variablechange,logLevelChange,relocation,vadd,vdel,vchange,bothChange,addedlogcount,deletelogcount)
+    if debugEnabled:
+        print allCodeChurn
+        print 'Im here'
+    
 
   
 def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChurn,commit_added,addedLogLines):
@@ -2010,7 +2013,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                 if matchedFlag == 1:
                     TypeId = -1 ## Default ID -- 1. Bug 2. New Feature 3. Task 4. IMprovement 5. Wish 6. Test 7. Sub-Task 8. New JIRA Project 11. Question
                     # print '---------------------'
-                    print commit_deleted
+                    # print commit_deleted
                     # productMetrics(addedLoglist[jm].logLine,deletedLogList[dJ].logLine,metricsList[im],allCodeChurn,commit_deleted)
                     
                     # print str(im) + ' --- Thats index of string' 
@@ -2096,9 +2099,14 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                             c = p.next
                         print c.data
 
-
+                    tmp = commit_deleted.split(' ')
                     # metricsList[im].typeoflogchange = 'b'
-                    metricsList[im].typeoflogchange = LogChangeType(oldlogList[im].logLine,addedLoglist[jm].logLine)  
+                    metricsList[im].typeoflogchange = LogChangeType(oldlogList[im].logLine,addedLoglist[jm].logLine) 
+
+                    if  metricsList[im].typeoflogchange =='t':
+                        # oldlogList[im].logLine,addedLoglist[jm].logLine
+                        StaticTextCheck(addedLoglist[jm].logLine,oldlogList[im].logLine,allCodeChurn,metricsNeeded,(' commit '+tmp[-1])):
+
 
                     if metricsList[im].typeoflogchange == "":
                         metricsList[im].typeoflogchange = "b"
@@ -2165,7 +2173,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     if metricsList[im].PriorityList == "5":
                         metricsList[im].PriorityList = "Trivial"
                     # print " The task Id --- > " + metricsList[im].issueId
-                    tmp = commit_deleted.split(' ')
+                    
 
 
 
