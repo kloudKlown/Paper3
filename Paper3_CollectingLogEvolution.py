@@ -1975,7 +1975,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         if totalcommits == 2:
                             foundDeleted = 1
                         # ais = 0
-                        print oldlogList[i].logLine + '---- ' + addedLoglist[j].logLine
+                        # print oldlogList[i].logLine + '---- ' + addedLoglist[j].logLine
                         # print commit_deleted
                         for deletedindex in range(len(deletedLogList)):
 
@@ -2050,11 +2050,11 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # print nodeList[im] 
                     if nodeList[im].data == None:
                         nodeList[im].data = oldlogList[im].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )
-                    print nodeList[im].data
+                    # print nodeList[im].data
                     ##### first create object of type Node and assign the value of log to it
                     newNode = Node(addedLoglist[jm].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )  )
                     newNode.next = None
-                    print newNode.data
+                    # print newNode.data
 
                     # this is the first node
                     if nodeList[im].next == None:
