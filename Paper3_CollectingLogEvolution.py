@@ -569,7 +569,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
 
             if re.match('\+.*',l):
 
-                print l
+                # print l
 
                 strippedLine = l.lstrip('+|-').strip()
 
