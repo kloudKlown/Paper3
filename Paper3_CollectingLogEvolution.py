@@ -1490,38 +1490,6 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
             # print oldlogList[i].logLine + str(metricsList[i].issueId)
 
 
-
-
-
-
-
-
-        # for i in range(ka,0,-1):
-            
-        #     if metricsList[i].VariableDeclared ==  400 and re.match('^LOG.*',oldlogList[i].logLine):
-        #         # print ' ----- codeChurninCommit = 0 ?? why ---------- '
-        #         # print allCodeChurn
-        #         ModifiedFile.write('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-        #         ModifiedFile.write('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-        #         ModifiedFile.write('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')                
-        #         ModifiedFile.write('\n %s, %s , %s \n' % (commitNumber, filename,oldlogList[i].logLine ))
-        #         ModifiedFile.write('%s \n' % oldFileLogs)
-
-        #         ModifiedFile.write('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')                
-
-        #         ModifiedFile.write('%s \n' % allCodeChurn)
-                # print '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n'
-
-                # # print metricsList[i].keys
-                # # print metricsList[i].codeChurninCommit
-                # # print metricsList[i].LogChurninCommit
-                # # print oldlogList[i].logLine 
-                # print '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
-
-                # print '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
-                # print '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
-                # print '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
-
 ### OLD LOG List
 
         i = 0
@@ -2034,11 +2002,13 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
                 i = i + 1              
                 
-
+                #######################
+                ### COLLECTING ALL METRICS AND NODE AND PRITING HERE
+                ### THIS IS DONE AFTER FINDING WHICH LOGS ARE MODIFIED IN THE COMMIT
                 if matchedFlag == 1:
                     TypeId = -1 ## Default ID -- 1. Bug 2. New Feature 3. Task 4. IMprovement 5. Wish 6. Test 7. Sub-Task 8. New JIRA Project 11. Question
                     # print '---------------------'
-                    # print commit_deleted
+                    print commit_deleted
                     # productMetrics(addedLoglist[jm].logLine,deletedLogList[dJ].logLine,metricsList[im],allCodeChurn,commit_deleted)
                     
                     # print str(im) + ' --- Thats index of string' 
@@ -2540,12 +2510,6 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     loglevelFile.write('%s \n'%oldlogList[i].logLine)
                     loglevelFile.write('%s \n'%allCodeChurn)
                     print metricsList[i].logLevelChangeFlag
-
-
-
-
-
-
 
 
 
