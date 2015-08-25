@@ -630,7 +630,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                 print deletedLog
                 print addedLog
                 print 'Log level Change Right ?????'
-            metricsNeeded.logLevelChangeFlag = metricsNeeded.logLevelChangeFlag + tmp2Deleted[0] + '-->' + tmp2[0] + '----'
+            metricsNeeded.logLevelChangeFlag = metricsNeeded.logLevelChangeFlag + tmp2Deleted[0] + '-->' + tmp2[0] 
 
     # if  metricsNeeded.logLevel == "0":
     # print addedLog 
@@ -1608,7 +1608,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
         
         # # print '------------------------------------------------------------------------'
 
-        debugEnabled =1
+        debugEnabled =0
         if debugEnabled: 
             print '------------------------------------------------------------------------'
             print oldFileLogs
@@ -2106,7 +2106,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         newNode.next = None
                     
                     lp = im
-                    debugEnabled =  1                    
+                    debugEnabled =  0                   
                     if debugEnabled:
 
                         c = Node()  
@@ -2368,9 +2368,9 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         print metricsList[im].PriorityList
                         print metricsList[im].DeveloperDetails
 
-                    print 'Before Swap the new Old Log becomes ' + oldlogList[im].logLine 
+                    # print 'Before Swap the new Old Log becomes ' + oldlogList[im].logLine 
                     oldlogList[im].logLine = addedLoglist[jm].logLine
-                    print 'After Swap the new Old Log becomes ' + oldlogList[im].logLine 
+                    # print 'After Swap the new Old Log becomes ' + oldlogList[im].logLine 
                     debugEnabled = 0
                     if debugEnabled:
 
