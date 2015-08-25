@@ -2108,7 +2108,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         if input() == 1:
                             continue
                         # input('test if this works')
-                        os.system('read -p "Press any key to continue"')
+                        # os.system('read -p "Press any key to continue"')
                             # oldlogList[im].logLine,addedLoglist[jm].logLine
                         StaticTextCheck(addedLoglist[jm].logLine,oldlogList[im].logLine,allCodeChurn,metricsNeeded,(' commit '+tmp[-1]))
 
