@@ -563,9 +563,9 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     
 
     if debugEnabled:
-        print 'checking for addedlog Line' + addedLog
+        print 'checking for addedlog Line ' + addedLog
 
-        for l in allCodeChurn:
+        for l in allCodeChurn.splitlines():
 
             if re.match('\+.*',l):
 
