@@ -211,6 +211,8 @@ def LogChangeType(addedLogLines,deletedLogLines):
             # print addedLoglist[add]
             # print deletedLogList[delete]
             # print Levenshtein.distance(addedLoglist[add],deletedLogList[delete])
+
+            
             # print aloglevel
             # print dloglevel
             # print Levenshtein.distance(aloglevel,dloglevel)
