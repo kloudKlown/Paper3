@@ -1851,8 +1851,8 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     metricsList[len(oldFileLogs.splitlines()) - 1].CodeChurnInFile = CodeChurnInFile
                     metricsList[len(oldFileLogs.splitlines()) - 1].logDensity = CodeChurnInFile/len(oldFileLogs.splitlines())
                     # print 
-                    print 'Added Log Line !!'
-                    print oldlogList[len(oldFileLogs.splitlines()) - 1].logLine
+                    # print 'Added Log Line !!'
+                    # print oldlogList[len(oldFileLogs.splitlines()) - 1].logLine
 
                     # print oldlogList[len(oldFileLogs.splitlines())].logLine + ' LOG LIST ELEMENT '
                     # print len(oldFileLogs.splitlines()) 
@@ -2100,12 +2100,12 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # next node do a recursion ofc
                     if nodeList[im].next != None:
                         curNode = nodeList[im]
-                        print ' IM HERE  '+ curNode.data  
+                        # print ' IM HERE  '+ curNode.data  
                         while curNode.next != None:
                             prevNode = curNode
                             curNode = curNode.next
                             # prevNode.prev = 
-                        print curNode.data
+                        # print curNode.data
                         curNode.next = newNode
                         newNode.next = None
                     
