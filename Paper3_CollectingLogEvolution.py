@@ -555,13 +555,26 @@ def LogChangeType(addedLogLines,deletedLogLines):
 
 
 def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added):
+
     debugEnabled = 1
-
-
     if debugEnabled:
-        print allCodeChurn
+        # print allCodeChurn
         print 'Im here'
     
+
+    if debugEnabled:
+        print 'checking for addedlog Line' + addedLog
+
+        for l in allCodeChurn:
+
+            if re.match('\+.*',l):
+
+                print l
+
+                strippedLine = l.lstrip('+|-').strip()
+
+                if strippedLine == addedLog:
+                    print 'Added Log Matched !!'
 
   
 def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChurn,commit_added,addedLogLines):
