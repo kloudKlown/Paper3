@@ -2523,17 +2523,17 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                 # print oldlogList[i].logLine + ',' +str(metricsList[i].logLevel) + ',' +str(metricsList[i].logTextLength) + ',' +str(metricsList[i].logVariableCount)
 
             if nodeList[i].next != None and oldlogList[i].churncount !=0 and debugEnabled:
-                # print '---- New Logs ---- '
+                print '---- New Logs ---- '
                 c = Node()  
                 c = nodeList[i]
                 p = Node()
                 while c.next != None:
-                    # print c.data
-                    # print '     |'
-                    # print '     |'
+                    print c.data
+                    print '     |'
+                    print '     |'
                     p = c
                     c = p.next
-                # print c.data
+                print c.data
                 ### Collect all Log level Changes First ### RQ2 Part 1.
                 if metricsList[i].logLevelChangeFlag != '':
                     loglevelFile.write('----------------------------- NEW LOG CHANGE -----------------------------------------\n')
