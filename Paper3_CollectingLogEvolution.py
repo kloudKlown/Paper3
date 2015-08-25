@@ -4,6 +4,7 @@ import subprocess
 import commands
 from datetime import datetime
 import Levenshtein
+import msvcrt 
 
 
 # log4j_add = re.compile(r'.*(action=\"A\").*(log4j).*(\.jar).*')
