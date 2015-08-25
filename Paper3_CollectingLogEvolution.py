@@ -2105,7 +2105,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
                     if  metricsList[im].typeoflogchange =='t':
                         # oldlogList[im].logLine,addedLoglist[jm].logLine
-                        StaticTextCheck(addedLoglist[jm].logLine,oldlogList[im].logLine,allCodeChurn,metricsNeeded,(' commit '+tmp[-1])):
+                        StaticTextCheck(addedLoglist[jm].logLine,oldlogList[im].logLine,allCodeChurn,metricsNeeded,(' commit '+tmp[-1]))
 
 
                     if metricsList[im].typeoflogchange == "":
