@@ -630,8 +630,12 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                 print deletedLog
                 print addedLog
                 print 'Log level Change Right ?????'
-            metricsNeeded.logLevelChangeFlag = metricsNeeded.logLevelChangeFlag + tmp2Deleted[0] + '-->' + tmp2[0] 
 
+            if len(metricsNeeded.logLevelChangeFlag) < 5:
+                metricsNeeded.logLevelChangeFlag = metricsNeeded.logLevelChangeFlag + tmp2Deleted[0] + '-->' + tmp2[0] 
+
+            else:
+                metricsNeeded.logLevelChangeFlag = metricsNeeded.logLevelChangeFlag + '-->' + tmp2[0]
     # if  metricsNeeded.logLevel == "0":
     # print addedLog 
     # print metricsNeeded.logLevel
