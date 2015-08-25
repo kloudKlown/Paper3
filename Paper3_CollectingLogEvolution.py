@@ -2105,9 +2105,8 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
                     if  metricsList[im].typeoflogchange =='t':
                         print tmp[-1]
-                            # input('test if this works')
-                        os.system('read -s -n 1 -p "Press any key to continue..."')
-
+                        # input('test if this works')
+                        os.system('read -p "Press any key to continue"')
                             # oldlogList[im].logLine,addedLoglist[jm].logLine
                         StaticTextCheck(addedLoglist[jm].logLine,oldlogList[im].logLine,allCodeChurn,metricsNeeded,(' commit '+tmp[-1]))
 
