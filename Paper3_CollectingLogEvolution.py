@@ -569,6 +569,24 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     index = -1
         # print 'abraca dabra'
 
+    ### Removing the opening and closing braces of the log so it doesnt fuck with anything
+    # for add in range(0,len(addedLog)):
+    LogAddedSD = addedLog
+    t = re.split('\(',LogAddedSD)
+    t = len(t[0]) + 1
+    # print addedLoglist[add][  t :-2]
+
+    LogAddedSD= LogAddedSD[  t :-2]
+    print LogAddedSD
+
+    LogDeletedSD = deletedLog
+    t = re.split('\(',LogDeletedSD)
+    t = len(t[0]) + 1
+    # print addedLoglist[add][  t :-2]
+
+    LogDeletedSD= LogDeletedSD[  t :-2]
+    print LogDeletedSD
+
     LogLineCommitMatchFlag=0
     if debugEnabled:
         # print 'checking for addedlog Line ' + addedLog
