@@ -654,6 +654,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
             print a
             print d
             metricsList[i][j] = Levenshtein.ratio(a,d)
+            print metricsList[i][j]
             j = j + 1
         i = i + 1
 
