@@ -560,17 +560,23 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     if debugEnabled:
         # print allCodeChurn
         print 'Im here'
-    
+
+    list1 = {}
+    i= 0
+    for line in  allCodeChurn.splitlines():
+        list1[i] = logGenealogy(line,0,0,0)
+        i = i + 1
+
+
 
     if debugEnabled:
         print 'checking for addedlog Line ' + addedLog
-
+        print commit_added
+        ### Collecting static stuff here. First is simple matching the line to all code in text
         for l in allCodeChurn.splitlines():
 
+            ### Match line to all code . This checks for addedLog.
             if re.match('\+.*',l):
-
-                # print l
-
                 strippedLine = l.lstrip('+|-').strip()
 
                 if strippedLine == addedLog:
