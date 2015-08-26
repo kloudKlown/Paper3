@@ -568,15 +568,18 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
         i = i + 1
 
 
-
+    LogLineCommitMatchFlag=0
     if debugEnabled:
         print 'checking for addedlog Line ' + addedLog
         print commit_added
         ### Collecting static stuff here. First is simple matching the line to all code in text
         for l in allCodeChurn.splitlines():
-
+            if re.match('commiy.*',l):
+                LogLineCommitMatchFlag = 0
+                if Levenshtein.ratio(l,commit_added) > 0.9:
+                    LogLineCommitMatchFlag = 1
             ### Match line to all code . This checks for addedLog.
-            if re.match('\+.*',l):
+            if re.match('\+.*',l) and LogLineCommitMatchFlag:
                 strippedLine = l.lstrip('+|-').strip()
 
                 if strippedLine == addedLog:
