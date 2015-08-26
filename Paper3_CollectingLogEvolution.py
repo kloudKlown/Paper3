@@ -619,8 +619,8 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                 else:
                     variablesadd = variablesadd +  a + '\n'
             else:
-                # print a + ' text add'
-                textadd = textadd + a + '\n' 
+                print a + ' text add'
+                textadd = textadd + a + '\n'
 
     for d in LogDeletedSD:
         if len(d) > 1:
@@ -636,7 +636,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                     else:
                         variablesdel = variablesdel +  d + '\n'
             else:
-                # print d + ' variable add'
+                print d + ' text add'
                 textdel = textdel + d + '\n' 
 
 
