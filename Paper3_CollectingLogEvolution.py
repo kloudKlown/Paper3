@@ -569,15 +569,17 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     index = -1
         # print 'abraca dabra'
 
-    ### Removing the opening and closing braces of the log so it doesnt fuck with anything
-    # for add in range(0,len(addedLog)):
+    ################################################
+    ################################################
+    ### Removing the opening and closing braces of the log so it doesnt fuck with anything. Now collected both added and deleted logs
+    ### without braces.
     LogAddedSD = addedLog
     t = re.split('\(',LogAddedSD)
     t = len(t[0]) + 1
     # print addedLoglist[add][  t :-2]
 
     LogAddedSD= LogAddedSD[  t :-2]
-    print LogAddedSD
+    # print LogAddedSD
 
     LogDeletedSD = deletedLog
     t = re.split('\(',LogDeletedSD)
@@ -585,7 +587,58 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     # print addedLoglist[add][  t :-2]
 
     LogDeletedSD= LogDeletedSD[  t :-2]
-    print LogDeletedSD
+    # print LogDeletedSD
+
+    ##########################
+    ########################
+
+    ## Now comparing the text in the logs
+    LogAddedSD = re.split("\"",LogAddedSD)
+    LogDeletedSD =  re.split("\"",LogDeletedSD)
+    if debugEnabled:
+        print LogAddedSD
+        print LogDeletedSD
+    textadd = ""
+    variablesadd = ""
+
+    textdel= ""
+    variablesdel = ""
+
+    for a in LogAddedSD:
+        # print a[-1:] + ' im here'
+        if len(a) > 1:
+            if a[:1] == ',' or a[:1] == '+' or a[-1:] == '+' :
+                # print a + ' variable add'
+                if a.count(',') > 1:
+                    aprime = a.split(',')
+                    # print a 
+                    # print ' comma separated crap'
+                    for aprimeprime in aprime:
+                        if  len(aprimeprime) > 1:
+                            variablesadd = variablesadd +  aprimeprime + '\n'
+                else:
+                    variablesadd = variablesadd +  a + '\n'
+            else:
+                # print a + ' text add'
+                textadd = textadd + a + '\n' 
+
+    for d in LogDeletedSD:
+        if len(d) > 1:
+            if d[:1] == ',' or d[:1] == '+' or  d[-1:] == '+' :
+                # print d + ' variable add'
+                    if d.count(',') > 1:
+                        dprime = d.split(',')
+                        # print a 
+                        # print ' comma separated crap'
+                        for aprimeprime in dprime:
+                            if  len(aprimeprime) > 1:
+                                variablesdel = variablesdel +  aprimeprime + '\n'
+                    else:
+                        variablesdel = variablesdel +  d + '\n'
+            else:
+                # print d + ' variable add'
+                textdel = textdel + d + '\n' 
+
 
     LogLineCommitMatchFlag=0
     if debugEnabled:
