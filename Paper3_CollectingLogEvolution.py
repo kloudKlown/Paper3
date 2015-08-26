@@ -593,9 +593,9 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
         ### Now go backwards till you encounter @@ * to get the block it was in.
 
         while not re.match('@@\s.*',list1[index].logLine):
-            index = index - 1
-            
             print list1[index].logLine
+            index = index - 1
+
 
 
                         # print strippedLine
