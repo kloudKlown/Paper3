@@ -566,7 +566,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     for line in  allCodeChurn.splitlines():
         list1[i] = logGenealogy(line,0,0,0)
         i = i + 1
-    i = 1
+    i = -1
         # print 'abraca dabra'
 
     LogLineCommitMatchFlag=0
