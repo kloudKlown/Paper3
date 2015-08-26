@@ -587,7 +587,11 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
 
                 if strippedLine == addedLog:
                     print 'Added Log Matched !!'
+
+                    print strippedLine
                     print list1[i].logLine
+
+                    print list1[i-1].logLine
 
 
 
