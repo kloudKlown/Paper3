@@ -642,6 +642,20 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                 textdel = textdel + d + '\n' 
 
 
+    ############## Text comparison now. Since there is spaces split the text at the spaces and use levenshtein distance to compare each term.
+    metricsList = [[0 for x in range(100)] for y in range(100)]  
+    textadd  =   re.split(" ",textadd)
+    textdel  =   re.split(" ",textdel)
+    for a in textadd:
+        for d in textdel:
+            print a
+            print d
+            metricsList[a][d] = Levenshtein.ratio(a,d)
+
+
+
+
+
     LogLineCommitMatchFlag=0
     if debugEnabled:
         # print 'checking for addedlog Line ' + addedLog
