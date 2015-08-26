@@ -646,13 +646,16 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     metricsList = [[0 for x in range(100)] for y in range(100)]  
     textadd  =   re.split(" ",textadd)
     textdel  =   re.split(" ",textdel)
+    i =0
+    j=0
     for a in textadd:
+
         for d in textdel:
             print a
             print d
-            metricsList[a][d] = Levenshtein.ratio(a,d)
-
-
+            metricsList[i][j] = Levenshtein.ratio(a,d)
+            j = j + 1
+        i = i + 1
 
 
 
