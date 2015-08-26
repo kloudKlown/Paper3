@@ -606,6 +606,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
 
     for a in LogAddedSD:
         # print a[-1:] + ' im here'
+        a = a.lstrip().rstrip()
         if len(a) > 1:
             if a[:1] == ',' or a[:1] == '+' or a[-1:] == '+' :
                 # print a + ' variable add'
@@ -623,6 +624,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                 textadd = textadd + a + '\n'
 
     for d in LogDeletedSD:
+        d = d.lstrip().rstrip()
         if len(d) > 1:
             if d[:1] == ',' or d[:1] == '+' or  d[-1:] == '+' :
                 # print d + ' variable add'
