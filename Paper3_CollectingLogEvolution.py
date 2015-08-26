@@ -574,7 +574,8 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
         print commit_added
         ### Collecting static stuff here. First is simple matching the line to all code in text
         for l in allCodeChurn.splitlines():
-            if re.match('commiy.*',l):
+
+            if re.match('commit.*',l):
                 LogLineCommitMatchFlag = 0
                 if Levenshtein.ratio(l,commit_added) > 0.9:
                     LogLineCommitMatchFlag = 1
