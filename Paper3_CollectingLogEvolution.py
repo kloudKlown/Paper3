@@ -566,25 +566,31 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     for line in  allCodeChurn.splitlines():
         list1[i] = logGenealogy(line,0,0,0)
         i = i + 1
-
+    i = 0
+        # print 'abraca dabra'
 
     LogLineCommitMatchFlag=0
     if debugEnabled:
-        print 'checking for addedlog Line ' + addedLog
-        print commit_added
+        # print 'checking for addedlog Line ' + addedLog
+        # print commit_added
         ### Collecting static stuff here. First is simple matching the line to all code in text
         for l in allCodeChurn.splitlines():
-
+            i = i+ 1
             if re.match('commit.*',l):
                 LogLineCommitMatchFlag = 0
                 if Levenshtein.ratio(l,commit_added) > 0.9:
                     LogLineCommitMatchFlag = 1
+            
             ### Match line to all code . This checks for addedLog.
             if re.match('\+.*',l) and LogLineCommitMatchFlag:
                 strippedLine = l.lstrip('+|-').strip()
 
                 if strippedLine == addedLog:
                     print 'Added Log Matched !!'
+                    print list1[i].logLine
+
+
+
 
   
 def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChurn,commit_added,addedLogLines):
@@ -2128,7 +2134,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
                     if  metricsList[im].typeoflogchange =='t':
                         print tmp[-1]
-                        if input() == 1:
+                        if input("Enter '1' ") == 1:
                             print "Good"
                         # input('test if this works')
                         # os.system('read -p "Press any key to continue"')
@@ -2517,7 +2523,6 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # print ' This stayed same for these many commits ,' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) ) + ',' + str(oldlogList[im].churncount)
                 else:
                     changedcount = changedcount + 1
-        # print 'abraca dabra'
 
 
         loglevelFile = open('LogLevel_ManualStudy.txt','ab+')
