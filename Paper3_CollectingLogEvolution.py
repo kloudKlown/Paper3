@@ -566,7 +566,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     for line in  allCodeChurn.splitlines():
         list1[i] = logGenealogy(line,0,0,0)
         i = i + 1
-    i = -1
+    index = -1
         # print 'abraca dabra'
 
     LogLineCommitMatchFlag=0
@@ -575,7 +575,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
         # print commit_added
         ### Collecting static stuff here. First is simple matching the line to all code in text
         for l in allCodeChurn.splitlines():
-            i = i+ 1
+            index = index+ 1
             if re.match('commit.*',l):
                 LogLineCommitMatchFlag = 0
                 if Levenshtein.ratio(l,commit_added) > 0.9:
@@ -588,7 +588,17 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                 if strippedLine == addedLog:
                     print 'Added Log Matched !!'
 
-                    # print strippedLine
+                    break
+
+        ### Now go backwards till you encounter @@ * to get the block it was in.
+
+        while not re.match('@@\s.*',list1[index].logLine):
+            index = index - 1
+            
+            print list1[index].logLine
+
+
+                        # print strippedLine
                     # print list1[i].logLine
 
                     # print list1[i-1].logLine
