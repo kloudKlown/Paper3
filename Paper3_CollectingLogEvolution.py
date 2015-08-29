@@ -648,16 +648,29 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     textdel  =   re.split(" ",textdel)
     i =0
     j=0
+
+    ######## Find levenshtein of static parts
     for a in textadd:
-        if a != ' ':
-            for d in textdel:
-                if d != ' ':
-                    print a
-                    print d
-                    metricsList[i][j] = Levenshtein.ratio(a,d)
-                    print metricsList[i][j]
-                    j = j + 1
-            i = i + 1
+        for d in textdel:
+            print a
+            print d
+            metricsList[i][j] = Levenshtein.ratio(a,d)
+            print metricsList[i][j]
+            j = j + 1
+        i = i + 1
+
+
+
+    ############ Now the tough part of comparison
+
+    SimilarTextNumber = 0
+    SimilarTextValue = 0
+
+    ### Check if there is addition of new terms into the text first.
+    
+
+
+
 
 
 
