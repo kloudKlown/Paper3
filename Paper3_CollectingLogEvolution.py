@@ -66,6 +66,8 @@ class metricsNeeded:
     LogRevisionCount = 0 
     TotalRevisionCount = 0
     typeoflogchange =""
+    AddedCodeBlock=""
+    DeletedCodeBlock=""
     # logChurnInFile = 0
     # CodeChurnInHistory = 0
 
@@ -75,7 +77,8 @@ class metricsNeeded:
     def __init__(self,keys = "null",logLevel=0, logLevelChangeFlag="", logVariableCount=0, logVariableChangeCount=0, logTextLength=0, logTextChangeLength=0,
         ifDebug = 0,ifStatment =0,    ifelse =0,    tryblock = 0,    catchblock = 0,    throwblock = 0,    elseif = 0,    elsestatement = 0,    functionexception = 0
         ,LogChurninCommit = 0, codeChurninCommit=0,totalLogsInFile = 0, VariableDeclared = 0 , VariableDeclaredNew = 0,issueId = "0",CodeChurnInFile = 0,logDensity = 0 
-        ,PriorityList = 0,DeveloperDetails = "null",CommentsCount = 0,methodInvocations = 0,    LogRevisionCount = 0,  TotalRevisionCount = 0,typeoflogchange=""):
+        ,PriorityList = 0,DeveloperDetails = "null",CommentsCount = 0,methodInvocations = 0,    LogRevisionCount = 0,  TotalRevisionCount = 0,typeoflogchange="",
+        AddedCodeBlock="",DeletedCodeBlock=""):
         self.keys = keys 
         self.logLevel = logLevel
         self.logLevelChangeFlag = logLevelChangeFlag
@@ -108,7 +111,8 @@ class metricsNeeded:
         self.LogRevisionCount = LogRevisionCount 
         self.TotalRevisionCount = TotalRevisionCount
         self.typeoflogchange = typeoflogchange
-        # self.logChurnInFile = logChurnInFile
+        self.AddedCodeBlock = AddedCodeBlock
+        self.DeletedCodeBlock = DeletedCodeBlock
 
 
 
@@ -802,23 +806,6 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
     metricsNeeded.logTextLength = (tmp[1].count('"')/2)
     
     debugEnabled = 1
-    # tmp2 = deletedLog[4:]
-    # if len(deletedLog) > 1:
-    #     if debugEnabled:
-    #         print str((tmpDeleted[1].count('"')/2)) +  ' length of deleted log '
-    #         print tmpDeleted[1] + ' <<------- this is deleted LOG '
-    #         print metricsNeeded.logTextLength 
-    #         print tmp[1] + ' <<<<<<------ THIS IS ADDED LOG IS '
-    #     # if len(deletedLog) > 2:
-    #     metricsNeeded.logTextChangeLength = metricsNeeded.logTextLength - (tmpDeleted[1].count('"')/2)
-
-    # if metricsNeeded.logTextChangeLength != 0 and debugEnabled:
-
-    #     print deletedLog
-    #     print addedLog
-    #     print ' LOG TEXT CHANGE LENGTH '
-    #     print metricsNeeded.logTextChangeLength
-
 
 
 
@@ -908,20 +895,12 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
             # print len(textadd.splitlines())
             print 'Deleted LOG'
             print deletedLog
-            # print len(variablesdel.splitlines())
-            # print len(textdel.splitlines())
-            # metricsNeeded.logTextLength = len(textadd.splitlines())
-            # metricsNeeded.logVariableChangeCount =  len(variablesadd.splitlines())
-
             # metricsNeeded.logTextChangeLength = len(textadd.splitlines()) - len(textdel.splitlines())
             print 'Log text change lenght is '
             print metricsNeeded.logTextChangeLength
 
             print 'Log Variable change length is '
             print metricsNeeded.logVariableChangeCount
-
-            # metricsNeeded.logVariableChangeCount = len(variablesadd.splitlines()) - len(variablesdel.splitlines())
-            # print metricsNeeded.logVariableChangeCount
 
     else:
             addedLog2 = ''.join(addedLog.split())
@@ -1017,9 +996,10 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
 
             while 1:
 
+
+                ### Collect logs from multiple lines
                 if added_log.match(list1[aes].logLine):
                     splitline = ""
-
                     if not next_line_patterns.match(list1[aes].logLine):
                             # print list1[aes].logLine
                             next2=list1[aes].logLine
@@ -1033,33 +1013,27 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                                     # print list1[aes].logLine
                                     next2 = list1[aes].logLine
                                     splitline =  splitline + next2.rstrip('\n').strip().lstrip('+|-|    ')
-                            # print list1[aes].logLine
-
-                                    # if not added_log.match(next2):
-                                            
-                                    # #         #print '---- Including This == >  ' + next2
-                                    # #         splitline =  splitline + next2.rstrip('\n').strip().lstrip('+|-|    ')
-                                    #         next2 = list1[aes].logLine
-                                    #         excludedLogLine = excludedLogLine  + next2.rstrip('\n').strip().lstrip('+|-|    ')
-                                    # else:
-                                    #         #print '---- Excluding this ==>   ' + next2
-                                    #         excludedLogLine = next2.rstrip('\n').strip().lstrip()
-                                    #         excludedLogFlag = 1
-
-
-                            # print list1[aes].logLine + ' HERE ?'2
-                 
 
                             list1[aes].logLine = splitline
                             # print splitline
-
-
-
                 if re.match('^\+.*',list1[aes].logLine):
                     # print list1[aes].logLine
                     if addedLog == list1[aes].logLine.lstrip('-|+').lstrip() or Levenshtein.ratio(addedLog,list1[aes].logLine.lstrip('-|+').lstrip()) > 0.9 :
                         # print 'Match Found'
                         # print list1[aes].logLine + ' NOW Should travel backwards '
+                        ################### collect the added code lines here
+                        # Found the added log line. So now I have to go backwards and find all the added log lines
+                        #####
+                        blockLine = aes
+                        countBlock = 0
+                        while not re.match('^@@.*',list1[blockLine].logLine) or countBlock < 10:
+                            if re.match('^+.*',list1[blockLine].logLine) or re.match('\s.*',list1[blockLine].logLine):
+                                metricsNeeded.AddedCodeBlock = metricsNeeded.AddedCodeBlock + list1[blockLine].logLine
+                                print list1[blockLine].logLine
+                                blockLine = blockLine - 1
+                                countBlock = countBlock + 1
+
+
                         break
                 if aes  == (len(list1)-1):
                     break
@@ -1096,7 +1070,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
 
 
                 if re.match('^\+.*(if\s|if)\(.*',list1[aes].logLine) and keyflag:
-                    if re.match('^\+.*(if\s|if)\((LOG|log|logger|Logger|LOGGER)\.isDebugEnabled.*',list1[aes].logLine) and keyflag:
+                    if re.match('^\+.*(if\s|if)\((LOG|log|logger|Logger|LOGGER)\.(isDebugEnabled|isTraceEnabled).*',list1[aes].logLine) and keyflag:
                         metricsNeeded.keys = "isDebug"
                         keyflag = 0
                         # print 'IF matched so add keys ' + list1[aes].logLine
@@ -1192,8 +1166,9 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
     # print '###########################################'
     # print  addedLog
     # print '###########################################'
-    debugEnabled = 0
+    
 
+    debugEnabled = 0
     if debugEnabled:
         print ' We are Here '
         print 'Log is  --- > ' + addedLog
