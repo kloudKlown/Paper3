@@ -605,7 +605,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
 
     # PlusSignCountSD =  LogDeletedSD.count('+')
 
-    if PlusDE >= BracesAD:
+    if (PlusDE - BracesAD) == 1 or (PlusDE - BracesAD) == 0  :
         print LogDeletedSD
         print LogAddedSD
         print ' THIS IS FORMAT CHANGE '
