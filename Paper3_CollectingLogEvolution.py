@@ -624,7 +624,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                 else:
                     variablesadd = variablesadd +  a + '\n'
             else:
-                print a + ' text add'
+                # print a + ' text add'
                 textadd = textadd + a + '\n'
 
     for d in LogDeletedSD:
@@ -642,7 +642,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                     else:
                         variablesdel = variablesdel +  d + '\n'
             else:
-                print d + ' text add'
+                # print d + ' text add'
                 textdel = textdel + d + '\n' 
 
 
@@ -702,7 +702,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
         ### Now go backwards till you encounter @@ * to get the block it was in.
 
         while not re.match('@@\s.*',list1[index].logLine):
-            print list1[index].logLine
+            # print list1[index].logLine
             index = index - 1
 
 
@@ -1031,7 +1031,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                         metricsNeeded.AddedCodeBlock =  metricsNeeded.AddedCodeBlock+ list1[aes].logLine + '--- THIS IS THE LOG LINE ---\n '
                         while not re.match('^@@.*',list1[blockLine].logLine):
                             if countBlock > 10:
-                                break   
+                                break  
                             # if re.match('^\+.*',list1[blockLine].logLine) or re.match('\s.*',list1[blockLine].logLine):
                             metricsNeeded.AddedCodeBlock = metricsNeeded.AddedCodeBlock + list1[blockLine].logLine + '\n'
                                 # print list1[blockLine].logLine
@@ -1047,9 +1047,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                 aes = aes + 1
 
 
-            for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
-                print kt
-            print '--------------------------------------------------------------------------------------'
+
             # print list1[aes].logLine + ' NOW Should travel backwards '
             
             LineCount2 = 0
@@ -1177,7 +1175,9 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
     # print  addedLog
     # print '###########################################'
     
-
+    for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
+        print kt
+    print '--------------------------------------------------------------------------------------'
     debugEnabled = 0
     if debugEnabled:
         print ' We are Here '
