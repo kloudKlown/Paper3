@@ -1038,9 +1038,9 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                         while not re.match('^@@.*',list1[blockLine].logLine):
                             if countBlock > 20:
                                 break  
-                            if re.match('^\+.*',list1[blockLine].logLine) or re.match('\s.*',list1[blockLine].logLine):
+                            if re.match('^-.*',list1[blockLine].logLine) or re.match('\s.*',list1[blockLine].logLine):
                                 metricsNeeded.DeletedCodeBlock = metricsNeeded.DeletedCodeBlock + list1[blockLine].logLine + '\n'
-                                # print list1[blockLine].logLine
+                                print list1[blockLine].logLine
                             blockLine = blockLine - 1
                             countBlock = countBlock + 1
 
