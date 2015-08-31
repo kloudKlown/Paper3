@@ -597,14 +597,28 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
 
     ######### Check if its format change  usually new Log has no '+' instead as ','
 
-    PlusSignCount =  LogAddedSD.count('+')
-    SeparatorSignCount = LogDeletedSD.count(',')
+    PlusAD = LogAddedSD.count('+')
+    PlusDE = LogDeletedSD.count('+')
 
-    if (PlusSignCount ) / ( SeparatorSignCount + 1 ) > 0.7:
+    CommaAD = LogAddedSD.count(',')
+    CommaDE = LogDeletedSD.count(',')
+
+    # PlusSignCountSD =  LogDeletedSD.count('+')
+
+    if PlusDE >= CommaAD:
         print LogDeletedSD
         print LogAddedSD
         print ' THIS IS FORMAT CHANGE '
         return
+
+    
+    # SeparatorSignCount = LogAddedSD.count(',')
+
+    # if (SeparatorSignCount)/ (PlusSignCount + 1)  > 0.7
+    #     print LogDeletedSD
+    #     print LogAddedSD
+    #     print ' THIS IS FORMAT CHANGE '
+    #     return
 
     ##########################
     ########################
