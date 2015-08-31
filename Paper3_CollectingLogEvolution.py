@@ -600,18 +600,18 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     PlusAD = LogAddedSD.count('+')
     PlusDE = LogDeletedSD.count('+')
 
-    CommaAD = LogAddedSD.count(',')
-    CommaDE = LogDeletedSD.count(',')
+    CommaAD = LogAddedSD.count('{}')
+    CommaDE = LogDeletedSD.count('{}')
 
     # PlusSignCountSD =  LogDeletedSD.count('+')
 
-    if PlusDE >= CommaAD:
+    if PlusDE == CommaAD:
         print LogDeletedSD
         print LogAddedSD
         print ' THIS IS FORMAT CHANGE '
         return
 
-    
+
     # SeparatorSignCount = LogAddedSD.count(',')
 
     # if (SeparatorSignCount)/ (PlusSignCount + 1)  > 0.7
