@@ -609,6 +609,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
         print LogDeletedSD
         print LogAddedSD
         print ' THIS IS FORMAT CHANGE '
+        metricsNeeded.typeoflogchange = 'f'
         return
 
 
