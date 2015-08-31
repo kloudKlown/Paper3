@@ -673,9 +673,9 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     # print len(variablesdel.splitlines()) 
     # print BracesAD
     if BracesAD == len(variablesdel.splitlines()) :
-        print LogDeletedSD
-        print LogAddedSD
-        print ' THIS IS FORMAT CHANGE '
+        # print LogDeletedSD
+        # print LogAddedSD
+        # print ' THIS IS FORMAT CHANGE '
         metricsNeeded.typeoflogchange = 'f'
         return
 
