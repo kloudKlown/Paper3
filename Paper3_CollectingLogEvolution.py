@@ -1019,23 +1019,49 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                             list1[aes].logLine = splitline
                             # print splitline
                 if re.match('^\+.*',list1[aes].logLine):
+
+                    ############# DELETED LOGS STUFF GOES HERE
+                    if deletedLog == list1[aes].logLine.lstrip('-|+').lstrip() or Levenshtein.ratio(deletedLog,list1[aes].logLine.lstrip('-|+').lstrip()) > 0.9 :
+                        # print 'Match Found'
+                        print list1[aes].logLine + ' NOW Should travel backwards '
+                        ################### collect the added code lines here
+                        # Found the added log line. So now I have to go backwards and find all the added log lines
+                        #####
+                        blockLine = aes - 1
+                        countBlock = 0 
+                        metricsNeeded.DeletedCodeBlock = list1[aes+2].logLine + '\n'                       
+                        metricsNeeded.DeletedCodeBlock = metricsNeeded.DeletedCodeBlock + list1[aes+1].logLine + '\n'
+                        metricsNeeded.DeletedCodeBlock =  metricsNeeded.DeletedCodeBlock+ list1[aes].logLine + '--- THIS IS THE DELETED LOG LINE ---\n '
+                        while not re.match('^@@.*',list1[blockLine].logLine):
+                            if countBlock > 20:
+                                break  
+                            if re.match('^\+.*',list1[blockLine].logLine) or re.match('\s.*',list1[blockLine].logLine):
+                                metricsNeeded.DeletedCodeBlock = metricsNeeded.DeletedCodeBlock + list1[blockLine].logLine + '\n'
+                                # print list1[blockLine].logLine
+                            blockLine = blockLine - 1
+                            countBlock = countBlock + 1
+
+                        break
+
+
                     # print list1[aes].logLine
+                    ############ THIS MAtched only the added Logs 
                     if addedLog == list1[aes].logLine.lstrip('-|+').lstrip() or Levenshtein.ratio(addedLog,list1[aes].logLine.lstrip('-|+').lstrip()) > 0.9 :
                         # print 'Match Found'
                         # print list1[aes].logLine + ' NOW Should travel backwards '
                         ################### collect the added code lines here
                         # Found the added log line. So now I have to go backwards and find all the added log lines
                         #####
-                        blockLine = aes
+                        blockLine = aes - 1
                         countBlock = 0 
                         metricsNeeded.AddedCodeBlock = list1[aes+2].logLine + '\n'                       
                         metricsNeeded.AddedCodeBlock = metricsNeeded.AddedCodeBlock + list1[aes+1].logLine + '\n'
-                        metricsNeeded.AddedCodeBlock =  metricsNeeded.AddedCodeBlock+ list1[aes].logLine + '--- THIS IS THE LOG LINE ---\n '
+                        metricsNeeded.AddedCodeBlock =  metricsNeeded.AddedCodeBlock+ list1[aes].logLine + '--- THIS IS THE ADDED LOG LINE ---\n '
                         while not re.match('^@@.*',list1[blockLine].logLine):
                             if countBlock > 20:
                                 break  
-                            # if re.match('^\+.*',list1[blockLine].logLine) or re.match('\s.*',list1[blockLine].logLine):
-                            metricsNeeded.AddedCodeBlock = metricsNeeded.AddedCodeBlock + list1[blockLine].logLine + '\n'
+                            if re.match('^\+.*',list1[blockLine].logLine) or re.match('\s.*',list1[blockLine].logLine):
+                                metricsNeeded.AddedCodeBlock = metricsNeeded.AddedCodeBlock + list1[blockLine].logLine + '\n'
                                 # print list1[blockLine].logLine
                             blockLine = blockLine - 1
                             countBlock = countBlock + 1
