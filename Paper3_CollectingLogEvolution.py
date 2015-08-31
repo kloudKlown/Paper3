@@ -595,24 +595,6 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     LogDeletedSD= LogDeletedSD[  t :-2]
     # print LogDeletedSD
 
-    ######### Check if its format change  usually new Log has no '+' instead as ','
-
-    PlusAD = LogAddedSD.count('+')
-    PlusDE = LogDeletedSD.count('+')
-
-    BracesAD = LogAddedSD.count('{}')
-    BracesDE = LogDeletedSD.count('{}')
-
-    # PlusSignCountSD =  LogDeletedSD.count('+')
-
-    if (PlusDE - BracesAD) == 1 or (PlusDE - BracesAD) == 0  :
-        print LogDeletedSD
-        print LogAddedSD
-        print ' THIS IS FORMAT CHANGE '
-        metricsNeeded.typeoflogchange = 'f'
-        return
-
-
     # SeparatorSignCount = LogAddedSD.count(',')
 
     # if (SeparatorSignCount)/ (PlusSignCount + 1)  > 0.7
@@ -676,12 +658,31 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                 # print d + ' text add'
                 textdel = textdel + d + '\n' 
 
+    ######### Check if its format change  usually new Log has no '+' instead as ','
+
+    PlusAD = LogAddedSD.count('+')
+    PlusDE = LogDeletedSD.count('+')
+
+    BracesAD = LogAddedSD.count('{}')
+    BracesDE = LogDeletedSD.count('{}')
+
+    # PlusSignCountSD =  LogDeletedSD.count('+')
+
+    print len(variablesdel.splitlines())
+    if BracesAD == len(variablesdel.splitlines()) :
+        print LogDeletedSD
+        print LogAddedSD
+        print ' THIS IS FORMAT CHANGE '
+        metricsNeeded.typeoflogchange = 'f'
+        return
+
+
 
     if metricsNeeded.typeoflogchange =='v' or metricsNeeded.typeoflogchange =='b' :
         ############## Text comparison now. Since there is spaces split the text at the spaces and use levenshtein distance to compare each term.
         metricsList = [[0 for x in range(100)] for y in range(100)]  
-        variablesadd  =   re.split(" ",variablesadd)
-        variablesdel  =   re.split(" ",variablesdel)
+        # variablesadd  =   re.split(" ",variablesadd)
+        # variablesdel  =   re.split(" ",variablesdel)
         i =0
         j=0
 
