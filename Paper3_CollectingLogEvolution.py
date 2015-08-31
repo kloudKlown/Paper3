@@ -605,6 +605,8 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
 
     ##########################
     ########################
+    LogAddedSDPerm = LogAddedSD
+    LogDeletedSDPerm = LogDeletedSD
 
     ## Now Splitting the text and variable parts so its easy to compare.
     LogAddedSD = re.split("\"",LogAddedSD)
@@ -660,11 +662,11 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
 
     ######### Check if its format change  usually new Log has no '+' instead as ','
 
-    PlusAD = LogAddedSD.count('+')
-    PlusDE = LogDeletedSD.count('+')
+    PlusAD = LogAddedSDPerm.count('+')
+    PlusDE = LogDeletedSDPerm.count('+')
 
-    BracesAD = LogAddedSD.count('{}')
-    BracesDE = LogDeletedSD.count('{}')
+    BracesAD = LogAddedSDPerm.count('\{\}')
+    BracesDE = LogDeletedSDPerm.count('{}')
 
     # PlusSignCountSD =  LogDeletedSD.count('+')
 
