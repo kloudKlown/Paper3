@@ -1124,14 +1124,14 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                                             while not next_line_patterns.match(list1[blockLine].logLine):
                                                     # print 'Starting Line --------- > '+ list1[aes].logLine
                                                     
-                                                    aes = aes + 1
+                                                    blockLine = blockLine - 1
                                                     # print list1[aes].logLine
                                                     next2 = list1[blockLine].logLine
                                                     splitline =  splitline + next2.rstrip('\n').strip().lstrip('+|-|    ')
 
                                             list1[blockLine].logLine = splitline
 
-                                    
+
                                     if deletedLog == list1[blockLine].logLine.lstrip('-').lstrip() or Levenshtein.ratio(deletedLog,list1[blockLine].logLine.lstrip('-').lstrip()) > 0.9 :
                                         # print list1[blockLine].logLine
                                         print commit_added
