@@ -1177,9 +1177,9 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
     # print  addedLog
     # print '###########################################'
     
-    # for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
-    #     print kt
-    # print '--------------------------------------------------------------------------------------'
+    for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
+        print kt
+    print '--------------------------------------------------------------------------------------'
     debugEnabled = 0
     if debugEnabled:
         print ' We are Here '
