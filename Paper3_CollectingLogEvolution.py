@@ -1114,7 +1114,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
 
                                 if re.match('^-.*',list1[blockLine].logLine):
                                     if deletedLog == list1[blockLine].logLine.lstrip('-').lstrip() or Levenshtein.ratio(deletedLog,list1[blockLine].logLine.lstrip('-').lstrip()) > 0.9 :
-                                        print list1[blockLine].logLine
+                                        # print list1[blockLine].logLine
                                         DLFoundFlag = 1
                                         countBlock = 0
 
