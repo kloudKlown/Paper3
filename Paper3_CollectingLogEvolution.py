@@ -2672,7 +2672,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                 c = nodeList[i]
                 p = Node()
                 while c.next != None:
-                    if c.typeofChange == ('t\|v\|b'):
+                    if c.typeofChange != ('r\|f'):
                         print c.data
                     print '     |'
                     print '     |'
