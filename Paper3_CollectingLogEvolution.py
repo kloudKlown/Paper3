@@ -2674,8 +2674,8 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                 while c.next != None:
                     if c.typeofChange != ('r\|f'):
                         print c.data
-                    print '     |'
-                    print '     |'
+                        print '     |'
+                        print '     |'
                     p = c
                     c = p.next
                 print c.data
