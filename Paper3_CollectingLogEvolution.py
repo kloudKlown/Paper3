@@ -681,6 +681,9 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
 
 
 
+    #############################
+    #### Context Update check goes here. 
+
     if metricsNeeded.typeoflogchange =='v' or metricsNeeded.typeoflogchange =='b' :
         ############## Text comparison now. Since there is spaces split the text at the spaces and use levenshtein distance to compare each term.
         metricsList = [[0 for x in range(100)] for y in range(100)]  
@@ -2669,7 +2672,8 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                 c = nodeList[i]
                 p = Node()
                 while c.next != None:
-                    print c.data
+                    if c.typeofChange == ('t\|v\|b'):
+                        print c.data
                     print '     |'
                     print '     |'
                     p = c
