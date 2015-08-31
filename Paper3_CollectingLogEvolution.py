@@ -2167,17 +2167,12 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     oldlogList[im].churncount =  oldlogList[im].churncount + 1
                     #nodeList[im] = Node("test")
                     # print nodeList[im] 
-                    if nodeList[im].data == None:
-                        nodeList[im].data = oldlogList[im].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )
-                    # print nodeList[im].data
-                    ##### first create object of type Node and assign the value of log to it
-                    newNode = Node(addedLoglist[jm].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )  )
-                    newNode.next = None
-                    # print newNode.data
 
-                    # this is the first node
-                    if nodeList[im].next == None:
-                        nodeList[im].next =  newNode
+
+
+
+
+
 
 
                     ##### GET THE BUG ID AND SEE WHAT TYPE OF FIX THIS IS
@@ -2196,8 +2191,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
 
 
-                    curNode = Node()
-                    prevNode= Node()    
+ 
 
                     lp = im
                     debugEnabled =  0                   
@@ -2216,18 +2210,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         print c.data
 
 
-                    # next node do a recursion ofc
-                    if nodeList[im].next != None:
-                        curNode = nodeList[im]
-                        # print ' IM HERE  '+ curNode.data  
-                        while curNode.next != None:
-                            prevNode = curNode
-                            curNode = curNode.next
-                            # prevNode.prev = 
-                        # print curNode.data
-                        curNode.next = newNode
-                        newNode.next = None
-                    
+
                     lp = im
                     debugEnabled =  0                   
                     if debugEnabled:
@@ -2355,7 +2338,34 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
                     # if metricsList[im].logLevelChangeFlag != '':
 
+                    #NODE CREATION
+                    #########################
+                    if nodeList[im].data == None:
+                        nodeList[im].data = oldlogList[im].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )
+                    # print nodeList[im].data
+                    ##### first create object of type Node and assign the value of log to it
+                    newNode = Node(addedLoglist[jm].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) )  )
+                    newNode.next = None
+                    # print newNode.data
 
+                    # this is the first node
+                    if nodeList[im].next == None:
+                        nodeList[im].next =  newNode
+                    curNode = Node()
+                    prevNode= Node()   
+                    # next node do a recursion ofc
+                    if nodeList[im].next != None:
+                        curNode = nodeList[im]
+                        # print ' IM HERE  '+ curNode.data  
+                        while curNode.next != None:
+                            prevNode = curNode
+                            curNode = curNode.next
+                            # prevNode.prev = 
+                        # print curNode.data
+                        curNode.next = newNode
+                        newNode.next = None
+                    
+                    
 
                     debugEnabled = 0
                     if debugEnabled:
