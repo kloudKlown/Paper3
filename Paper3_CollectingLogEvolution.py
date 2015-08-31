@@ -1101,6 +1101,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                             ################### collect the added code lines here
                             # Found the added log line. So now I have to go backwards and find all the added log lines
                             #####
+                            print deletedLog
                             blockLine = aes - 1
                             countBlock = 0 
                             metricsNeeded.AddedCodeBlock = list1[aes+2].logLine + '\n'                       
