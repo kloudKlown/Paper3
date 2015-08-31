@@ -710,54 +710,6 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
 
         ############ Now the tough part of comparison
 
-        SimilarTextNumber = 0
-        SimilarTextValue = 0
-
-
-        ### Check if there is addition of new terms into the text first.
-    
-
-
-
-
-
-
-    # LogLineCommitMatchFlag=0
-    # if debugEnabled:
-    #     # print 'checking for addedlog Line ' + addedLog
-    #     # print commit_added
-    #     ### Collecting static stuff here. First is simple matching the line to all code in text
-    #     for l in allCodeChurn.splitlines():
-    #         index = index+ 1
-    #         if re.match('commit.*',l):
-    #             LogLineCommitMatchFlag = 0
-    #             if Levenshtein.ratio(l,commit_added) > 0.9:
-    #                 LogLineCommitMatchFlag = 1
-            
-    #         ### Match line to all code . This checks for addedLog.
-    #         if re.match('\+.*',l) and LogLineCommitMatchFlag:
-    #             strippedLine = l.lstrip('+|-').strip()
-
-    #             if strippedLine == addedLog:
-    #                 print 'Added Log Matched !!'
-
-    #                 break
-
-    #     ### Now go backwards till you encounter @@ * to get the block it was in.
-
-    #     while not re.match('@@\s.*',list1[index].logLine):
-    #         # print list1[index].logLine
-    #         index = index - 1
-
-
-
-    #                     # print strippedLine
-    #                 # print list1[i].logLine
-
-    #                 # print list1[i-1].logLine
-
-
-
 
   
 def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChurn,commit_added,addedLogLines):
@@ -1061,34 +1013,6 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                             list1[aes].logLine = splitline
                             # print splitline
 
-                ############################ Collect Deleted Code Block
-
-                # if re.match('^-.*',list1[aes].logLine):
-                #     ############# DELETED LOGS STUFF GOES HERE
-                #     if deletedLog == list1[aes].logLine.lstrip('-').lstrip() or Levenshtein.ratio(deletedLog,list1[aes].logLine.lstrip('-').lstrip()) > 0.9 :
-                #         # print 'Match Found'
-                #         # print deletedLog
-                #         print list1[aes].logLine + ' NOW Should travel backwards '
-                #         ################### collect the added code lines here
-                #         # Found the added log line. So now I have to go backwards and find all the added log lines
-                #         #####
-                #         blockLine = aes - 1
-                #         countBlock = 0 
-                #         metricsNeeded.DeletedCodeBlock = list1[aes+2].logLine + '\n'                       
-                #         metricsNeeded.DeletedCodeBlock = metricsNeeded.DeletedCodeBlock + list1[aes+1].logLine + '\n'
-                #         metricsNeeded.DeletedCodeBlock =  metricsNeeded.DeletedCodeBlock+ list1[aes].logLine + '--- THIS IS THE DELETED LOG LINE ---\n '
-                #         while not re.match('^@@.*',list1[blockLine].logLine):
-                #             if countBlock > 20:
-                #                 break  
-                #             if re.match('^-.*',list1[blockLine].logLine) or re.match('\s.*',list1[blockLine].logLine):
-                #                 metricsNeeded.DeletedCodeBlock = metricsNeeded.DeletedCodeBlock + list1[blockLine].logLine + '\n'
-                #                 print list1[blockLine].logLine
-                #             blockLine = blockLine - 1
-                #             countBlock = countBlock + 1
-
-                #         break
-
-
                 if re.match('^\+.*',list1[aes].logLine):
 
                     # print list1[aes].logLine
@@ -1113,28 +1037,9 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                                     break  
 
                                 if re.match('^-.*',list1[blockLine].logLine):
-                                # if added_log.match(list1[aes].logLine):
-                                    splitline = ""
-                                    if not next_line_patterns.match(list1[blockLine].logLine):
-                                            # print list1[aes].logLine
-                                            next2=list1[blockLine].logLine
-
-                                            splitline =  splitline + next2.rstrip('\n').strip().lstrip()
-
-                                            while not next_line_patterns.match(list1[blockLine].logLine):
-                                                    # print 'Starting Line --------- > '+ list1[aes].logLine
-                                                    
-                                                    blockLine = blockLine - 1
-                                                    # print list1[aes].logLine
-                                                    next2 = list1[blockLine].logLine
-                                                    splitline =  splitline + next2.rstrip('\n').strip().lstrip('+|-|    ')
-
-                                            list1[blockLine].logLine = splitline
-
-
                                     if deletedLog == list1[blockLine].logLine.lstrip('-').lstrip() or Levenshtein.ratio(deletedLog,list1[blockLine].logLine.lstrip('-').lstrip()) > 0.9 :
                                         # print list1[blockLine].logLine
-                                        print commit_added
+                                        # print commit_added
                                         DLFoundFlag = 1
                                         countBlock = 0
 
