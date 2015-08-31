@@ -601,7 +601,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     ## Now Splitting the text and variable parts so its easy to compare.
     LogAddedSD = re.split("\"",LogAddedSD)
     LogDeletedSD =  re.split("\"",LogDeletedSD)
-    debugEnabled = 0
+    debugEnabled = 1
     if debugEnabled:
         print LogAddedSD
         print LogDeletedSD
