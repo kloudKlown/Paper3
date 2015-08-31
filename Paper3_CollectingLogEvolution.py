@@ -2678,7 +2678,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         print '     |'
                     p = c
                     c = p.next
-                if c.typeofChange in ('t','v','b','l'):
+                if c.typeofChange in ('t','v','b','l','None'):
                     print c.data
                 print c.typeofChange
                 ### Collect all Log level Changes First ### RQ2 Part 1.
