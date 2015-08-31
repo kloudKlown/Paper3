@@ -648,33 +648,35 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                 textdel = textdel + d + '\n' 
 
 
-    ############## Text comparison now. Since there is spaces split the text at the spaces and use levenshtein distance to compare each term.
-    metricsList = [[0 for x in range(100)] for y in range(100)]  
-    textadd  =   re.split(" ",textadd)
-    textdel  =   re.split(" ",textdel)
-    i =0
-    j=0
+    if metricsNeeded.typeoflogchange =='t':
+        ############## Text comparison now. Since there is spaces split the text at the spaces and use levenshtein distance to compare each term.
+        metricsList = [[0 for x in range(100)] for y in range(100)]  
+        textadd  =   re.split(" ",textadd)
+        textdel  =   re.split(" ",textdel)
+        i =0
+        j=0
 
-    for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
-        print kt
-    print '--------------------------------------------------------------------------------------'
+        for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
+            print kt
+        print '--------------------------------------------------------------------------------------'
 
-    ######## Find levenshtein of static parts
-    for a in textadd:
-        for d in textdel:
-            # print a
-            # print d
-            metricsList[i][j] = Levenshtein.ratio(a,d)
-            # print metricsList[i][j]
-            j = j + 1
-        i = i + 1
+        ######## Find levenshtein of static parts
+        for a in textadd:
+            for d in textdel:
+                # print a
+                # print d
+                metricsList[i][j] = Levenshtein.ratio(a,d)
+                # print metricsList[i][j]
+                j = j + 1
+            i = i + 1
 
 
 
-    ############ Now the tough part of comparison
+        ############ Now the tough part of comparison
 
-    SimilarTextNumber = 0
-    SimilarTextValue = 0
+        SimilarTextNumber = 0
+        SimilarTextValue = 0
+
 
     ### Check if there is addition of new terms into the text first.
     
@@ -684,39 +686,39 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
 
 
 
-    LogLineCommitMatchFlag=0
-    if debugEnabled:
-        # print 'checking for addedlog Line ' + addedLog
-        # print commit_added
-        ### Collecting static stuff here. First is simple matching the line to all code in text
-        for l in allCodeChurn.splitlines():
-            index = index+ 1
-            if re.match('commit.*',l):
-                LogLineCommitMatchFlag = 0
-                if Levenshtein.ratio(l,commit_added) > 0.9:
-                    LogLineCommitMatchFlag = 1
+    # LogLineCommitMatchFlag=0
+    # if debugEnabled:
+    #     # print 'checking for addedlog Line ' + addedLog
+    #     # print commit_added
+    #     ### Collecting static stuff here. First is simple matching the line to all code in text
+    #     for l in allCodeChurn.splitlines():
+    #         index = index+ 1
+    #         if re.match('commit.*',l):
+    #             LogLineCommitMatchFlag = 0
+    #             if Levenshtein.ratio(l,commit_added) > 0.9:
+    #                 LogLineCommitMatchFlag = 1
             
-            ### Match line to all code . This checks for addedLog.
-            if re.match('\+.*',l) and LogLineCommitMatchFlag:
-                strippedLine = l.lstrip('+|-').strip()
+    #         ### Match line to all code . This checks for addedLog.
+    #         if re.match('\+.*',l) and LogLineCommitMatchFlag:
+    #             strippedLine = l.lstrip('+|-').strip()
 
-                if strippedLine == addedLog:
-                    print 'Added Log Matched !!'
+    #             if strippedLine == addedLog:
+    #                 print 'Added Log Matched !!'
 
-                    break
+    #                 break
 
-        ### Now go backwards till you encounter @@ * to get the block it was in.
+    #     ### Now go backwards till you encounter @@ * to get the block it was in.
 
-        while not re.match('@@\s.*',list1[index].logLine):
-            # print list1[index].logLine
-            index = index - 1
+    #     while not re.match('@@\s.*',list1[index].logLine):
+    #         # print list1[index].logLine
+    #         index = index - 1
 
 
 
-                        # print strippedLine
-                    # print list1[i].logLine
+    #                     # print strippedLine
+    #                 # print list1[i].logLine
 
-                    # print list1[i-1].logLine
+    #                 # print list1[i-1].logLine
 
 
 
@@ -2288,7 +2290,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         # input('test if this works')
                         # os.system('read -p "Press any key to continue"')
                             # oldlogList[im].logLine,addedLoglist[jm].logLine
-                        StaticTextCheck(addedLoglist[jm].logLine,oldlogList[im].logLine,allCodeChurn,metricsNeeded,(' commit '+tmp[-1]))
+                        # StaticTextCheck(addedLoglist[jm].logLine,oldlogList[im].logLine,allCodeChurn,metricsNeeded,(' commit '+tmp[-1]))
 
 
                     if metricsList[im].typeoflogchange == "":
@@ -2386,6 +2388,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # loglevelFile = open('LogLevel_ManualStudy.txt','ab+')
 
                     GatherMetricsForNotChangedLogs(addedLoglist[jm].logLine,oldlogList[im].logLine,metricsList[im],allCodeChurn,(' commit '+tmp[-1]),addedLogLines) 
+                    StaticTextCheck(addedLoglist[jm].logLine,oldlogList[im].logLine,allCodeChurn,metricsNeeded,(' commit '+tmp[-1]))
 
                     # if metricsList[im].logLevelChangeFlag != '':
 
