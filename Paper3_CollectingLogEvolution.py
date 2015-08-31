@@ -1025,13 +1025,13 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                         # Found the added log line. So now I have to go backwards and find all the added log lines
                         #####
                         blockLine = aes
-                        countBlock = 0
-                        metricsNeeded.AddedCodeBlock = list1[aes+2].logLine                        
-                        metricsNeeded.AddedCodeBlock = metricsNeeded.AddedCodeBlock + list1[aes+1].logLine
-                        metricsNeeded.AddedCodeBlock = list1[aes].logLine + '--- THIS IS THE LOG LINE ---'
+                        countBlock = 0 
+                        metricsNeeded.AddedCodeBlock = list1[aes+2].logLine + '\n'                       
+                        metricsNeeded.AddedCodeBlock = metricsNeeded.AddedCodeBlock + list1[aes+1].logLine + '\n'
+                        metricsNeeded.AddedCodeBlock = list1[aes].logLine + '--- THIS IS THE LOG LINE ---\n '
                         while not re.match('^@@.*',list1[blockLine].logLine) or countBlock < 10:
                             if re.match('^\+.*',list1[blockLine].logLine) or re.match('\s.*',list1[blockLine].logLine):
-                                metricsNeeded.AddedCodeBlock = metricsNeeded.AddedCodeBlock + list1[blockLine].logLine
+                                metricsNeeded.AddedCodeBlock = metricsNeeded.AddedCodeBlock + list1[blockLine].logLine + '\n'
                                 # print list1[blockLine].logLine
                             blockLine = blockLine - 1
                             countBlock = countBlock + 1
