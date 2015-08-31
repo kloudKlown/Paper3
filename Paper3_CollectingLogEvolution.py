@@ -1065,7 +1065,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                             metricsNeeded.AddedCodeBlock = metricsNeeded.AddedCodeBlock + list1[aes+1].logLine + '\n'
                             metricsNeeded.AddedCodeBlock =  metricsNeeded.AddedCodeBlock+ list1[aes].logLine + '--- THIS IS THE ADDED LOG LINE ---\n '
                             DLFoundFlag = 0
-                            while 1:
+                            while not re.match('^---\s.*',list1[blockLine].logLine):
                                 if countBlock > 15 and DLFoundFlag:
                                     break  
 
