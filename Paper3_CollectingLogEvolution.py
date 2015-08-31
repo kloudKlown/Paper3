@@ -627,7 +627,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     ## Now Splitting the text and variable parts so its easy to compare.
     LogAddedSD = re.split("\"",LogAddedSD)
     LogDeletedSD =  re.split("\"",LogDeletedSD)
-    debugEnabled = 1
+    debugEnabled = 0
     if debugEnabled:
         print LogAddedSD
         print LogDeletedSD
@@ -2413,7 +2413,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
                     GatherMetricsForNotChangedLogs(addedLoglist[jm].logLine,oldlogList[im].logLine,metricsList[im],allCodeChurn,(' commit '+tmp[-1]),addedLogLines) 
                     if  metricsList[im].typeoflogchange !='r' or metricsList[im].typeoflogchange !='l' :
-                        print tmp[-1]
+                        # print tmp[-1]
                         # if input("Enter '1' ") == 1:
                         #     print "Good"
                         # input('test if this works')
