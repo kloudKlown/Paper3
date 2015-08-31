@@ -1218,9 +1218,9 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
     # print  addedLog
     # print '###########################################'
     
-    for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
-        print kt
-    print '--------------------------------------------------------------------------------------'
+    # for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
+    #     print kt
+    # print '--------------------------------------------------------------------------------------'
     debugEnabled = 0
     if debugEnabled:
         print ' We are Here '
@@ -2279,7 +2279,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # metricsList[im].typeoflogchange = 'b'
                     metricsList[im].typeoflogchange = LogChangeType(oldlogList[im].logLine,addedLoglist[jm].logLine) 
 
-                    if  metricsList[im].typeoflogchange =='t':
+                    if  metricsList[im].typeoflogchange !='r' or metricsList[im].typeoflogchange !='l' :
                         print tmp[-1]
                         if input("Enter '1' ") == 1:
                             print "Good"
