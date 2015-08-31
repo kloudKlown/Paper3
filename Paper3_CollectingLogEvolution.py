@@ -1018,10 +1018,12 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
 
                             list1[aes].logLine = splitline
                             # print splitline
-                if re.match('^\+.*',list1[aes].logLine):
 
+                ############################ Collect Deleted Code Block
+
+                if re.match('^-.*',list1[aes].logLine):
                     ############# DELETED LOGS STUFF GOES HERE
-                    if deletedLog == list1[aes].logLine.lstrip('-|+').lstrip() or Levenshtein.ratio(deletedLog,list1[aes].logLine.lstrip('-|+').lstrip()) > 0.9 :
+                    if deletedLog == list1[aes].logLine.lstrip('-').lstrip() or Levenshtein.ratio(deletedLog,list1[aes].logLine.lstrip('-').lstrip()) > 0.9 :
                         # print 'Match Found'
                         print deletedLog
                         print list1[aes].logLine + ' NOW Should travel backwards '
@@ -1044,6 +1046,8 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
 
                         break
 
+
+                if re.match('^\+.*',list1[aes].logLine):
 
                     # print list1[aes].logLine
                     ############ THIS MAtched only the added Logs 
