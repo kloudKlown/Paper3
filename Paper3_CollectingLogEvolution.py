@@ -665,7 +665,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     PlusAD = LogAddedSDPerm.count('+')
     PlusDE = LogDeletedSDPerm.count('+')
 
-    BracesAD = LogAddedSDPerm.count('\{\}')
+    BracesAD = LogAddedSDPerm.count('{}')
     BracesDE = LogDeletedSDPerm.count('{}')
 
     # PlusSignCountSD =  LogDeletedSD.count('+')
