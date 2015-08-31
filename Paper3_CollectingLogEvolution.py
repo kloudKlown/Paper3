@@ -648,11 +648,11 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                 textdel = textdel + d + '\n' 
 
 
-    if metricsNeeded.typeoflogchange =='t':
+    if metricsNeeded.typeoflogchange =='v' or metricsNeeded.typeoflogchange =='b' :
         ############## Text comparison now. Since there is spaces split the text at the spaces and use levenshtein distance to compare each term.
         metricsList = [[0 for x in range(100)] for y in range(100)]  
-        textadd  =   re.split(" ",textadd)
-        textdel  =   re.split(" ",textdel)
+        variablesadd  =   re.split(" ",variablesadd)
+        variablesdel  =   re.split(" ",variablesdel)
         i =0
         j=0
 
@@ -661,16 +661,19 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
         print '--------------------------------------------------------------------------------------'
 
         ######## Find levenshtein of static parts
-        for a in textadd:
-            for d in textdel:
-                # print a
-                # print d
+        for a in variablesadd:
+            for d in variablesdel:
+                print a
+                print d
                 metricsList[i][j] = Levenshtein.ratio(a,d)
                 # print metricsList[i][j]
                 j = j + 1
             i = i + 1
 
 
+        #############
+        # Check if its consistent update or not first.
+        
 
         ############ Now the tough part of comparison
 
