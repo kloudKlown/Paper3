@@ -562,7 +562,7 @@ def LogChangeType(addedLogLines,deletedLogLines):
 
 def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added):
 
-    debugEnabled = 1
+    debugEnabled = 0
     if debugEnabled:
         # print allCodeChurn
         print 'Im here'
@@ -601,6 +601,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     ## Now Splitting the text and variable parts so its easy to compare.
     LogAddedSD = re.split("\"",LogAddedSD)
     LogDeletedSD =  re.split("\"",LogDeletedSD)
+    debugEnabled = 0
     if debugEnabled:
         print LogAddedSD
         print LogDeletedSD
@@ -673,7 +674,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
 
         #############
         # Check if its consistent update or not first.
-        
+
 
         ############ Now the tough part of comparison
 
