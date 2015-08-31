@@ -1067,7 +1067,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                             if countBlock > 15 and DLFoundFlag:
                                 break  
 
-                            if deletedLog == list1[aes].logLine.lstrip('-').lstrip() or Levenshtein.ratio(deletedLog,list1[aes].logLine.lstrip('-').lstrip()) > 0.9 :
+                            if deletedLog == list1[blockLine].logLine.lstrip('-').lstrip() or Levenshtein.ratio(deletedLog,list1[blockLine].logLine.lstrip('-').lstrip()) > 0.9 :
                                 DLFoundFlag = 1
                                 countBlock = 0
 
