@@ -668,7 +668,8 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
 
     # PlusSignCountSD =  LogDeletedSD.count('+')
 
-    print len(variablesdel.splitlines())
+    print len(variablesdel.splitlines()) 
+    print BracesAD
     if BracesAD == len(variablesdel.splitlines()) :
         print LogDeletedSD
         print LogAddedSD
