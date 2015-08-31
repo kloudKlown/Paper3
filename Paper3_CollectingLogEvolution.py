@@ -2680,8 +2680,6 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     c = p.next
                 if c.typeofChange != ('r\|f'):
                     print c.data
-
-                    
                 ### Collect all Log level Changes First ### RQ2 Part 1.
                 if metricsList[i].logLevelChangeFlag != '':
                     loglevelFile.write('----------------------------- NEW LOG CHANGE -----------------------------------------\n')
