@@ -678,7 +678,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
         SimilarTextValue = 0
 
 
-    ### Check if there is addition of new terms into the text first.
+        ### Check if there is addition of new terms into the text first.
     
 
 
@@ -2283,14 +2283,6 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # metricsList[im].typeoflogchange = 'b'
                     metricsList[im].typeoflogchange = LogChangeType(oldlogList[im].logLine,addedLoglist[jm].logLine) 
 
-                    if  metricsList[im].typeoflogchange !='r' or metricsList[im].typeoflogchange !='l' :
-                        print tmp[-1]
-                        # if input("Enter '1' ") == 1:
-                        #     print "Good"
-                        # input('test if this works')
-                        # os.system('read -p "Press any key to continue"')
-                            # oldlogList[im].logLine,addedLoglist[jm].logLine
-                        # StaticTextCheck(addedLoglist[jm].logLine,oldlogList[im].logLine,allCodeChurn,metricsNeeded,(' commit '+tmp[-1]))
 
 
                     if metricsList[im].typeoflogchange == "":
@@ -2388,7 +2380,14 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     # loglevelFile = open('LogLevel_ManualStudy.txt','ab+')
 
                     GatherMetricsForNotChangedLogs(addedLoglist[jm].logLine,oldlogList[im].logLine,metricsList[im],allCodeChurn,(' commit '+tmp[-1]),addedLogLines) 
-                    StaticTextCheck(addedLoglist[jm].logLine,oldlogList[im].logLine,allCodeChurn,metricsNeeded,(' commit '+tmp[-1]))
+                    if  metricsList[im].typeoflogchange !='r' or metricsList[im].typeoflogchange !='l' :
+                        print tmp[-1]
+                        # if input("Enter '1' ") == 1:
+                        #     print "Good"
+                        # input('test if this works')
+                        # os.system('read -p "Press any key to continue"')
+                            # oldlogList[im].logLine,addedLoglist[jm].logLine
+                        StaticTextCheck(addedLoglist[jm].logLine,oldlogList[im].logLine,allCodeChurn,metricsNeeded,(' commit '+tmp[-1]))
 
                     # if metricsList[im].logLevelChangeFlag != '':
 
