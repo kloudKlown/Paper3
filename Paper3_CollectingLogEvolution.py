@@ -1044,8 +1044,8 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                     break
                 aes = aes + 1
 
-                
-            for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines):
+
+            for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
                 print kt
             print '--------------------------------------------------------------------------------------'
             # print list1[aes].logLine + ' NOW Should travel backwards '
