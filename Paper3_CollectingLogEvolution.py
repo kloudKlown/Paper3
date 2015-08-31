@@ -2337,9 +2337,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                         # input('test if this works')
                         # os.system('read -p "Press any key to continue"')
                             # oldlogList[im].logLine,addedLoglist[jm].logLine
-                        print metricsList[im].typeoflogchange
                         StaticTextCheck(addedLoglist[jm].logLine,oldlogList[im].logLine,allCodeChurn,metricsList[im],(' commit '+tmp[-1]))
-                        print metricsList[im].typeoflogchange
 
                     # if metricsList[im].logLevelChangeFlag != '':
 
@@ -2675,7 +2673,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                 p = Node()
                 while c.next != None:
                     if c.typeofChange != ('r\|f'):
-                        print c.data
+                        print c.typeofChange
                         print '     |'
                         print '     |'
                     p = c
