@@ -694,8 +694,8 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
         print '--------------------------------------------------------------------------------------'
 
         ######## Find levenshtein of static parts
-        for a in variablesadd:
-            for d in variablesdel:
+        for a in variablesadd.splitlines():
+            for d in variablesdel.splitlines():
                 # print a
                 # print d
                 metricsList[i][j] = Levenshtein.ratio(a,d)
