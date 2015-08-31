@@ -117,10 +117,10 @@ class metricsNeeded:
 
 
 class Node:
-    def __init__(self, data=None,addedBlock = None, next=None,prev = None):
+    def __init__(self, data=None,addedBlock = None,typeofChange = None, next=None,prev = None):
         self.data = data
         self.addedBlock = addedBlock
-        # self.deletedBlock =  deletedBlock
+        self.typeofChange =  typeofChange
         self.next  = next
         self.prev = prev    
 
@@ -2347,6 +2347,7 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
                     newNode = Node()
                     newNode.data = addedLoglist[jm].logLine + ',' + str( (oldlogList[im].commitCount - oldlogList[im].commitCountOld) ) 
                     newNode.addedBlock = metricsList[im].AddedCodeBlock
+                    newNode.typeofChange = metricsList[im].typeoflogchange
                     newNode.next = None
                     # print newNode.data
 
