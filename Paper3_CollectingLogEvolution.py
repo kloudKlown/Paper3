@@ -1053,6 +1053,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                     ############ THIS MAtched only the added Logs 
                     if addedLog == list1[aes].logLine.lstrip('-|+').lstrip() or Levenshtein.ratio(addedLog,list1[aes].logLine.lstrip('-|+').lstrip()) > 0.9 :
                         # print 'Match Found'
+                        print deletedLog
                         # print list1[aes].logLine + ' NOW Should travel backwards '
                         ################### collect the added code lines here
                         # Found the added log line. So now I have to go backwards and find all the added log lines
