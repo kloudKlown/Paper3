@@ -117,8 +117,10 @@ class metricsNeeded:
 
 
 class Node:
-    def __init__(self, data=None, next=None,prev = None):
+    def __init__(self, data=None,addedBlock = None,deletedBlock = None, next=None,prev = None):
         self.data = data
+        self.addedBlock = addedBlock
+        self.deletedBlock =  deletedBlock
         self.next  = next
         self.prev = prev    
 
@@ -1030,7 +1032,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                         metricsNeeded.AddedCodeBlock = metricsNeeded.AddedCodeBlock + list1[aes+1].logLine + '\n'
                         metricsNeeded.AddedCodeBlock =  metricsNeeded.AddedCodeBlock+ list1[aes].logLine + '--- THIS IS THE LOG LINE ---\n '
                         while not re.match('^@@.*',list1[blockLine].logLine):
-                            if countBlock > 10:
+                            if countBlock > 20:
                                 break  
                             # if re.match('^\+.*',list1[blockLine].logLine) or re.match('\s.*',list1[blockLine].logLine):
                             metricsNeeded.AddedCodeBlock = metricsNeeded.AddedCodeBlock + list1[blockLine].logLine + '\n'
@@ -1175,9 +1177,9 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
     # print  addedLog
     # print '###########################################'
     
-    for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
-        print kt
-    print '--------------------------------------------------------------------------------------'
+    # for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
+    #     print kt
+    # print '--------------------------------------------------------------------------------------'
     debugEnabled = 0
     if debugEnabled:
         print ' We are Here '
