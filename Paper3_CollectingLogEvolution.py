@@ -598,7 +598,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     ##########################
     ########################
 
-    ## Now comparing the text in the logs
+    ## Now Splitting the text and variable parts so its easy to compare.
     LogAddedSD = re.split("\"",LogAddedSD)
     LogDeletedSD =  re.split("\"",LogDeletedSD)
     if debugEnabled:
@@ -654,6 +654,10 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     textdel  =   re.split(" ",textdel)
     i =0
     j=0
+
+    for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
+        print kt
+    print '--------------------------------------------------------------------------------------'
 
     ######## Find levenshtein of static parts
     for a in textadd:
@@ -1218,9 +1222,7 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
     # print  addedLog
     # print '###########################################'
     
-    # for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
-    #     print kt
-    # print '--------------------------------------------------------------------------------------'
+
     debugEnabled = 0
     if debugEnabled:
         print ' We are Here '
@@ -2281,8 +2283,8 @@ def gatherLogMetrics(alllogLines,addedLogLines,deletedLogLines,allCodeChurn):
 
                     if  metricsList[im].typeoflogchange !='r' or metricsList[im].typeoflogchange !='l' :
                         print tmp[-1]
-                        if input("Enter '1' ") == 1:
-                            print "Good"
+                        # if input("Enter '1' ") == 1:
+                        #     print "Good"
                         # input('test if this works')
                         # os.system('read -p "Press any key to continue"')
                             # oldlogList[im].logLine,addedLoglist[jm].logLine
