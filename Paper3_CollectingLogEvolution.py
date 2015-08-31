@@ -622,6 +622,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                     # print a 
                     # print ' comma separated crap'
                     for aprimeprime in aprime:
+                        aprimeprime = aprimeprime.lstrip().rstrip()
                         if  len(aprimeprime) > 1:
                             variablesadd = variablesadd +  aprimeprime + '\n'
                 else:
@@ -640,6 +641,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                         # print a 
                         # print ' comma separated crap'
                         for aprimeprime in dprime:
+                            aprimeprime = aprimeprime.lstrip().rstrip()
                             if  len(aprimeprime) > 1:
                                 variablesdel = variablesdel +  aprimeprime + '\n'
                     else:
@@ -664,8 +666,8 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
         ######## Find levenshtein of static parts
         for a in variablesadd:
             for d in variablesdel:
-                print a
-                print d
+                # print a
+                # print d
                 metricsList[i][j] = Levenshtein.ratio(a,d)
                 # print metricsList[i][j]
                 j = j + 1
