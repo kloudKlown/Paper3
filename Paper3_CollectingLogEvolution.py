@@ -1053,32 +1053,33 @@ def GatherMetricsForNotChangedLogs(addedLog,deletedLog,metricsNeeded,allCodeChur
                     ############ THIS MAtched only the added Logs 
                     if addedLog == list1[aes].logLine.lstrip('-|+').lstrip() or Levenshtein.ratio(addedLog,list1[aes].logLine.lstrip('-|+').lstrip()) > 0.9 :
                         # print 'Match Found'
-                        print deletedLog
+                        # print deletedLog
                         # print list1[aes].logLine + ' NOW Should travel backwards '
-                        ################### collect the added code lines here
-                        # Found the added log line. So now I have to go backwards and find all the added log lines
-                        #####
-                        blockLine = aes - 1
-                        countBlock = 0 
-                        metricsNeeded.AddedCodeBlock = list1[aes+2].logLine + '\n'                       
-                        metricsNeeded.AddedCodeBlock = metricsNeeded.AddedCodeBlock + list1[aes+1].logLine + '\n'
-                        metricsNeeded.AddedCodeBlock =  metricsNeeded.AddedCodeBlock+ list1[aes].logLine + '--- THIS IS THE ADDED LOG LINE ---\n '
-                        DLFoundFlag = 0
-                        while 1:
-                            if countBlock > 15 and DLFoundFlag:
-                                break  
+                        if len(deletedLog) > 3: 
+                            ################### collect the added code lines here
+                            # Found the added log line. So now I have to go backwards and find all the added log lines
+                            #####
+                            blockLine = aes - 1
+                            countBlock = 0 
+                            metricsNeeded.AddedCodeBlock = list1[aes+2].logLine + '\n'                       
+                            metricsNeeded.AddedCodeBlock = metricsNeeded.AddedCodeBlock + list1[aes+1].logLine + '\n'
+                            metricsNeeded.AddedCodeBlock =  metricsNeeded.AddedCodeBlock+ list1[aes].logLine + '--- THIS IS THE ADDED LOG LINE ---\n '
+                            DLFoundFlag = 0
+                            while 1:
+                                if countBlock > 15 and DLFoundFlag:
+                                    break  
 
-                            if deletedLog == list1[blockLine].logLine.lstrip('-').lstrip() or Levenshtein.ratio(deletedLog,list1[blockLine].logLine.lstrip('-').lstrip()) > 0.9 :
-                                DLFoundFlag = 1
-                                countBlock = 0
+                                if deletedLog == list1[blockLine].logLine.lstrip('-').lstrip() or Levenshtein.ratio(deletedLog,list1[blockLine].logLine.lstrip('-').lstrip()) > 0.9 :
+                                    DLFoundFlag = 1
+                                    countBlock = 0
 
 
-                            # if re.match('^\+.*',list1[blockLine].logLine) or re.match('\s.*',list1[blockLine].logLine):
-                            if countBlock < 15:
-                                metricsNeeded.AddedCodeBlock = metricsNeeded.AddedCodeBlock + list1[blockLine].logLine + '\n'
-                                # print list1[blockLine].logLine
-                            blockLine = blockLine - 1
-                            countBlock = countBlock + 1
+                                # if re.match('^\+.*',list1[blockLine].logLine) or re.match('\s.*',list1[blockLine].logLine):
+                                if countBlock < 15:
+                                    metricsNeeded.AddedCodeBlock = metricsNeeded.AddedCodeBlock + list1[blockLine].logLine + '\n'
+                                    # print list1[blockLine].logLine
+                                blockLine = blockLine - 1
+                                countBlock = countBlock + 1
 
                         break
 
