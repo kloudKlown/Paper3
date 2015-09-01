@@ -672,7 +672,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
 
     # print len(variablesdel.splitlines()) 
     # print BracesAD
-    if BracesAD == len(variablesdel.splitlines()) :
+    if BracesAD == len(variablesdel.splitlines()) and metricsNeeded.typeoflogchange == 'b' :
         # print LogDeletedSD
         # print LogAddedSD
         # print ' THIS IS FORMAT CHANGE '
@@ -696,12 +696,22 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
             print kt
         print '--------------------------------------------------------------------------------------'
 
+
+        deltedVariableMatchNumber = 0
+
         ######
         # print the variables now
         for a in variablesdel.splitlines():
             ### First is simple thing to remove + marks
             a = a.replace('+','')
-            print a
+            a = ''.join(a.split())
+            #### Now check if the same things are present in addedcode block or not. only added code or deleted code.
+
+            for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
+
+
+
+
 
         ######## Find levenshtein of static parts
         for a in variablesadd.splitlines():
