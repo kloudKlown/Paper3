@@ -723,7 +723,9 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                         if debugEnabled:
                             print kt[-2]
                             deletedVariableLevenRatio = Levenshtein.ratio(kt[-2],a)
-
+                            #### THIS MEANS ITS A PERFECT MATCH for newly added stuff
+                            if deletedVariableLevenRatio == 1:
+                                addedVariableMatchNumber = addedVariableMatchNumber + 1
 
 
 
