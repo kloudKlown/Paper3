@@ -684,7 +684,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
     #############################
     #### Context Update check goes here. 
 
-    if metricsNeeded.typeoflogchange =='v' or metricsNeeded.typeoflogchange =='b' :
+    if metricsNeeded.typeoflogchange =='v' or metricsNeeded.typeoflogchange =='b' or metricsNeeded.typeoflogchange =='t' :
         ############## Text comparison now. Since there is spaces split the text at the spaces and use levenshtein distance to compare each term.
         metricsList = [[0 for x in range(100)] for y in range(100)]  
         # variablesadd  =   re.split(" ",variablesadd)
@@ -707,8 +707,8 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
             a = ''.join(a.split())
             #### Now check if the same things are present in addedcode block or not. only added code or deleted code.
 
-            # for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
-            #     print
+            for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
+                print
 
 
 
