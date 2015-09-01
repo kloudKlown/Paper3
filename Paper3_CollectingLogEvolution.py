@@ -696,6 +696,11 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
             print kt
         print '--------------------------------------------------------------------------------------'
 
+        ######
+        # print the variables now
+        for a in variablesdel.splitlines():
+            print a
+
         ######## Find levenshtein of static parts
         for a in variablesadd.splitlines():
             for d in variablesdel.splitlines():
@@ -707,11 +712,11 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
             i = i + 1
 
 
+
+
+
         #############
         # Check if its consistent update or not first.
-
-
-        ############ Now the tough part of comparison
 
 
   
