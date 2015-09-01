@@ -719,7 +719,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
 
                         kt = kt[0].split(' ')
                         if debugEnabled:
-                            print kt
+                            print kt[-2]
 
 
 
