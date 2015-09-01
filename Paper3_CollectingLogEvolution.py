@@ -706,9 +706,9 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
             ### First is simple thing to remove + marks
             a = a.replace('+','')
             a = ''.join(a.split())
-            print a
+            # print a
             #### Now check if the same things are present in addedcode block or not. only added code or deleted code.
-            debugEnabled = 1
+            debugEnabled = 0
             for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
                 ### Added Code check first
                 if added_code.match(kt) and not ( added_log.match(kt) or deleted_log.match(kt) ):
@@ -720,6 +720,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                         kt = kt.split('=')
 
                         kt = kt[0].split(' ')
+                        debugEnabled = 1
                         if debugEnabled:
                             print kt[-2]
                             deletedVariableLevenRatio = Levenshtein.ratio(kt[-2],a)
