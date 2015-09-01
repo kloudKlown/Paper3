@@ -717,7 +717,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                     if re.match('.*=.*',kt):
                         kt = kt.split('=')
 
-                        kt = kt.split(' ')
+                        kt = kt[0].split(' ')
                         if debugEnabled:
                             print kt[-1]
 
