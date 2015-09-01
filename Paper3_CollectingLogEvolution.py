@@ -708,7 +708,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
             a = ''.join(a.split())
             # print a
             #### Now check if the same things are present in addedcode block or not. only added code or deleted code.
-            debugEnabled = 0
+            debugEnabled = 1
             for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
                 ### Added Code check first
                 if added_code.match(kt) and not ( added_log.match(kt) or deleted_log.match(kt) ):
@@ -726,8 +726,8 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                             deletedVariableLevenRatio = Levenshtein.ratio(kt[-2],a)
                             #### THIS MEANS ITS A PERFECT MATCH for newly added stuff
                             if deletedVariableLevenRatio == 1:
-                                print '\nMated added variable to added code\n'
-                                print '\n the Added Keywork is ' + kt[-2]
+                                print '\n Matched added variable to added code\n'
+                                print '\n The Added keyword is ' + kt[-2]
                                 print '\n Added Term in Log is ' + a
 
                                 addedVariableMatchNumber = addedVariableMatchNumber + 1
