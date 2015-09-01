@@ -706,11 +706,19 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
             a = a.replace('+','')
             a = ''.join(a.split())
             #### Now check if the same things are present in addedcode block or not. only added code or deleted code.
-
+            debugEnabled = 1
             for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
                 ### Added Code check first
                 if added_code.match(kt) and not ( added_log.match(kt) or deleted_log.match(kt) ):
-                    print kt
+                    if debugEnabled:
+                        print kt
+
+                    #### first priority '='
+                    if re.match('.*=.*',kt):
+                        kt = kt.split('=')
+                        if debugEnabled:
+                            print kt[0]
+
 
 
 
