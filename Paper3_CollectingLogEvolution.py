@@ -697,14 +697,16 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
         print '--------------------------------------------------------------------------------------'
 
 
-        deltedVariableMatchNumber = 0
+        addedVariableMatchNumber = 0
+        addedVariableLevenRatio = 0
 
         ######
         # print the variables now
-        for a in variablesdel.splitlines():
+        for a in variablesadd.splitlines():
             ### First is simple thing to remove + marks
             a = a.replace('+','')
             a = ''.join(a.split())
+            print a
             #### Now check if the same things are present in addedcode block or not. only added code or deleted code.
             debugEnabled = 1
             for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
@@ -720,6 +722,9 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                         kt = kt[0].split(' ')
                         if debugEnabled:
                             print kt[-2]
+                            deletedVariableLevenRatio = Levenshtein.ratio(kt[-2],a)
+
+
 
 
 
