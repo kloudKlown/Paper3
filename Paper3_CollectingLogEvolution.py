@@ -708,7 +708,7 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
             #### Now check if the same things are present in addedcode block or not. only added code or deleted code.
 
             for kt in reversed(metricsNeeded.AddedCodeBlock.splitlines()):
-
+                print
 
 
 
