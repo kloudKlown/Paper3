@@ -716,8 +716,10 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
                     #### first priority '='
                     if re.match('.*=.*',kt):
                         kt = kt.split('=')
+
+                        kt = kt.split(' ')
                         if debugEnabled:
-                            print kt[0]
+                            print kt[-1]
 
 
 
