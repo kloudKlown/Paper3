@@ -699,6 +699,8 @@ def StaticTextCheck(addedLog,deletedLog,allCodeChurn,metricsNeeded,commit_added)
         ######
         # print the variables now
         for a in variablesdel.splitlines():
+            ### First is simple thing to remove + marks
+            a.replace('+','')
             print a
 
         ######## Find levenshtein of static parts
