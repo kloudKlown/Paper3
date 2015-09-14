@@ -6,8 +6,8 @@ from datetime import datetime
 import Levenshtein
 
 
-file1 = open('AllFiles','r')
+file1 = open('AllFiles1','r')
 
 for l in file1:
-
-	
+	print l
+	p = commands.getoutput('grep -i "switch.*slf4j" %s'  %(l))
