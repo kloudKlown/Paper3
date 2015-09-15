@@ -16,12 +16,12 @@ for l in file1:
 #       print l
         l = l.strip('\n')
         p = ""
-		flag = 0
+        flag = 0
         p = commands.getoutput('grep -i \'<.*\(switch\|migrate\).*slf4j\' %s'  %(l))
         #print p
         if p:
             DirectList =DirectList + l + '\n'
-			continue
+            continue
             flag = 1
             # print l
 			
@@ -57,9 +57,8 @@ for l in file1:
 
 
 			######################### INDIRECT THINGS NOW
-		if flag == 0:	
+        if flag == 0:	
 			p = commands.getoutput('grep -i \'\(switch\|migrate\).*slf4j\' %s'  %(l))
-			#print p
 			if p:
 					InDirectList =InDirectList + l + '\n'
 					continue
