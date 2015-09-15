@@ -22,32 +22,32 @@ for l in file1:
         if p:
             DirectList =DirectList + l + '\n'
             flag = 1
-            print l
+            # print l
 			
 
         p = commands.getoutput('grep -i \'<.*\(switch\|migrate\).*log4j\' %s' %(l))
         if p:
 			DirectList =DirectList + l + '\n'
 			flag = 1
-			print l
+			# print l
 
         p = commands.getoutput('grep -i \'<.*\(switch\|migrate\).*logback\' %s' %(l))
         if p:
 			DirectList =DirectList + l + '\n'
-			print l
+			# print l
 			flag = 1
 
 			
         p = commands.getoutput('grep -i \'<.*\(switch\|migrate\).*logging\' %s' %(l))
         if p:
 			DirectList =DirectList + l + '\n'
-			print l
+			# print l
 			flag = 1
 			
         p = commands.getoutput('grep -i \'<.*\(switch\|migrate\).*jcl\' %s' %(l))
         if p:
 			DirectList =DirectList + l + '\n'
-			print l
+			# print l
 			flag = 1
 
 
@@ -57,29 +57,34 @@ for l in file1:
 			#print p
 			if p:
 					InDirectList =InDirectList + l + '\n'
-					print l
+					# print l
 
 			p = commands.getoutput('grep -i \'\(switch\|migrate\).*log4j\' %s' %(l))
 			if p:
 				InDirectList =InDirectList + l + '\n'
-				print l
+				# print l
 
 			p = commands.getoutput('grep -i \'\(switch\|migrate\).*logback\' %s' %(l))
 			if p:
 				InDirectList =InDirectList + l + '\n'
-				print l
+				# print l
 
 				
 			p = commands.getoutput('grep -i \'\(switch\|migrate\).*logging\' %s' %(l))
 			if p:
 				InDirectList =InDirectList + l + '\n'
-				print l
+				# print l
 				
 			p = commands.getoutput('grep -i \'\(switch\|migrate\).*jcl\' %s' %(l))
 			if p:
 				InDirectList =InDirectList + l + '\n'
-				print l
+				# print l
 
-			
+
+print InDirectList
+
+print '----------'
+
+print DirectList
 			
 			
