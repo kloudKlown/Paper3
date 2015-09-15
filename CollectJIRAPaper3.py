@@ -14,11 +14,12 @@ InDirectList = ""
 
 for l in file1:
 		#       print l
+		#\(switch\|migrate\)
 		l = l.strip('\n')
 		p = ""
 		flag = 0
-		p = commands.getoutput('grep -i \'<.*\(switch\|migrate\).*slf4j\' %s'  %(l))
-		print p
+		p = commands.getoutput('grep -i \'<.*change.*slf4j\' %s'  %(l))
+		print l
 		if p:
 			DirectList =DirectList + l + '\n'
 			
@@ -27,7 +28,7 @@ for l in file1:
 			continue
 			
 
-		p = commands.getoutput('grep -i \'<.*\(switch\|migrate\).*log4j\' %s' %(l))
+		p = commands.getoutput('grep -i \'<.*change.*log4j\' %s' %(l))
 		if p:
 			DirectList =DirectList + l + '\n'
 			
@@ -35,7 +36,7 @@ for l in file1:
 			print l
 			continue
 
-		p = commands.getoutput('grep -i \'<.*\(switch\|migrate\).*logback\' %s' %(l))
+		p = commands.getoutput('grep -i \'<.*change.*logback\' %s' %(l))
 		if p:
 			DirectList =DirectList + l + '\n'
 			# continue
@@ -44,7 +45,7 @@ for l in file1:
 			continue
 
 			
-		p = commands.getoutput('grep -i \'<.*\(switch\|migrate\).*logging\' %s' %(l))
+		p = commands.getoutput('grep -i \'<.*change.*logging\' %s' %(l))
 		if p:
 			DirectList =DirectList + l + '\n'
 			# continue
@@ -52,7 +53,7 @@ for l in file1:
 			flag = 1
 			continue
 			
-		p = commands.getoutput('grep -i \'<.*\(switch\|migrate\).*jcl\' %s' %(l))
+		p = commands.getoutput('grep -i \'<.*change.*jcl\' %s' %(l))
 		if p:
 			DirectList =DirectList + l + '\n'
 			# continue
@@ -63,21 +64,21 @@ for l in file1:
 
 			######################### INDIRECT THINGS NOW
 		# if flag == 0:	
-		p = commands.getoutput('grep -i \'\(switch\|migrate\).*slf4j\' %s'  %(l))
+		p = commands.getoutput('grep -i \'change.*slf4j\' %s'  %(l))
 		if p:
 				InDirectList =InDirectList + l + '\n'
 				# continue
 				print l
 				continue
 
-		p = commands.getoutput('grep -i \'\(switch\|migrate\).*log4j\' %s' %(l))
+		p = commands.getoutput('grep -i \'change.*log4j\' %s' %(l))
 		if p:
 			InDirectList =InDirectList + l + '\n'
 			# continue
 			print l
 			continue
 
-		p = commands.getoutput('grep -i \'\(switch\|migrate\).*logback\' %s' %(l))
+		p = commands.getoutput('grep -i \'change.*logback\' %s' %(l))
 		if p:
 			InDirectList =InDirectList + l + '\n'
 			# continue
@@ -85,14 +86,14 @@ for l in file1:
 			continue
 
 			
-		p = commands.getoutput('grep -i \'\(switch\|migrate\).*logging\' %s' %(l))
+		p = commands.getoutput('grep -i \'change.*logging\' %s' %(l))
 		if p:
 			InDirectList =InDirectList + l + '\n'
 			# continue
 			print l
 			continue
 			
-		p = commands.getoutput('grep -i \'\(switch\|migrate\).*jcl\' %s' %(l))
+		p = commands.getoutput('grep -i \'change.*jcl\' %s' %(l))
 		if p:
 			InDirectList =InDirectList + l + '\n'
 			# continue
