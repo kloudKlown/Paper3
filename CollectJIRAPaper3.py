@@ -18,42 +18,47 @@ for l in file1:
 		p = ""
 		flag = 0
 		p = commands.getoutput('grep -i \'<.*\(switch\|migrate\).*slf4j\' %s'  %(l))
-		#print p
+		print p
 		if p:
 			DirectList =DirectList + l + '\n'
-			continue
+			
 			flag = 1
 			print l
+			continue
 			
 
 		p = commands.getoutput('grep -i \'<.*\(switch\|migrate\).*log4j\' %s' %(l))
 		if p:
 			DirectList =DirectList + l + '\n'
-			continue
+			
 			flag = 1
 			print l
+			continue
 
 		p = commands.getoutput('grep -i \'<.*\(switch\|migrate\).*logback\' %s' %(l))
 		if p:
 			DirectList =DirectList + l + '\n'
-			continue
+			# continue
 			print l
 			flag = 1
+			continue
 
 			
 		p = commands.getoutput('grep -i \'<.*\(switch\|migrate\).*logging\' %s' %(l))
 		if p:
 			DirectList =DirectList + l + '\n'
-			continue
+			# continue
 			print l
 			flag = 1
+			continue
 			
 		p = commands.getoutput('grep -i \'<.*\(switch\|migrate\).*jcl\' %s' %(l))
 		if p:
 			DirectList =DirectList + l + '\n'
-			continue
+			# continue
 			print l
 			flag = 1
+			continue
 
 
 			######################### INDIRECT THINGS NOW
@@ -61,33 +66,38 @@ for l in file1:
 		p = commands.getoutput('grep -i \'\(switch\|migrate\).*slf4j\' %s'  %(l))
 		if p:
 				InDirectList =InDirectList + l + '\n'
-				continue
+				# continue
 				print l
+				continue
 
 		p = commands.getoutput('grep -i \'\(switch\|migrate\).*log4j\' %s' %(l))
 		if p:
 			InDirectList =InDirectList + l + '\n'
-			continue
+			# continue
 			print l
+			continue
 
 		p = commands.getoutput('grep -i \'\(switch\|migrate\).*logback\' %s' %(l))
 		if p:
 			InDirectList =InDirectList + l + '\n'
-			continue
+			# continue
 			print l
+			continue
 
 			
 		p = commands.getoutput('grep -i \'\(switch\|migrate\).*logging\' %s' %(l))
 		if p:
 			InDirectList =InDirectList + l + '\n'
-			continue
+			# continue
 			print l
+			continue
 			
 		p = commands.getoutput('grep -i \'\(switch\|migrate\).*jcl\' %s' %(l))
 		if p:
 			InDirectList =InDirectList + l + '\n'
-			continue
+			# continue
 			print l
+			continue
 
 
 print InDirectList
