@@ -18,8 +18,8 @@ for l in file1:
 		l = l.strip('\n')
 		p = ""
 		flag = 0
-		p = commands.getoutput('grep -i \'<.*change.*slf4j\' %s'  %(l))
-		print l
+		p = commands.getoutput('c %s'  %(l))
+		# print l
 		if p:
 			DirectList =DirectList + l + '\n'
 			
@@ -107,4 +107,10 @@ print '----------'
 
 print DirectList
 			
-			
+file2 = open ('ListJIRALogLibrary_Chage','ab+')
+
+file2.write('%s' %DirectList)
+file2.write('--------------------------\n')
+file2.write('%s' %InDirectList)
+
+
