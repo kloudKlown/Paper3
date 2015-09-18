@@ -33,7 +33,7 @@ for line in file1:
 				d2 = d1[1]
 				print d2
 			
-			#print line2
+				#print line2
 			if re.match('.*<created>.*',line2):
 				d1 = line2.split(',')
 				#print d1[1]
@@ -46,6 +46,9 @@ for line in file1:
 				#print d2
 
 			if re.match('.*Date of First Response.*',line2):
+				res1  = line2.next()
+				res1 = line2.next()
+				
 				res1 = line2.split(',')
 				res2 = res1[1].split('<')
 				t2 = res2[0].split(':')
@@ -53,6 +56,7 @@ for line in file1:
 
 				temp = temp.strip()
 				temp = temp.replace(' ','-')
+				print temp
 
 
 			if re.match('.*<comment id.*>',line2):
@@ -76,8 +80,8 @@ for line in file1:
 
 
 		#print str(comment-uniqcomments) + str(comment)
-		if temp =="":
-			temp = 'Not resolved'		
+		# if temp =="":
+			# temp = 'Not resolved'		
 		print Fname.strip('\.xml') + '/' + d2 + ',' + temp+ ',' + str(comment-uniqcomments) + ',' +str(comment)
 
-			
+				
